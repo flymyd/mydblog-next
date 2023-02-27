@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import {Button} from "@fluentui/react-button";
+import path from "path";
+import {promises as fs} from "fs";
 
-export default function Home() {
+export default function Home(props: any) {
   return (
     <>
       <Button appearance="primary">Get started</Button>
@@ -13,8 +15,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico"/>
       </Head>
       <main className={styles.main}>
-
+        {props.json}
       </main>
     </>
   )
+}
+
+export async function getServerSideProps(context: any) {
+  const jsonDirectory = path.join(process.cwd(), 'public')
+  const json = await fs.readFile(path.join(jsonDirectory, '/articles.json'), 'utf-8')
+  return {
+    props: {json}
+  }
 }
