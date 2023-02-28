@@ -1,13 +1,67 @@
+const fs = require('node:fs/promises')
+const path = require('node:path')
+const indexesPath = path.resolve(__dirname, '../public')
+
+async function traverse(dir, res, suffix = '.md') {
+  let files = await fs.readdir(dir);
+  for (let file of files) {
+    let filePath = path.join(dir, '/', file)
+    let stats = await fs.stat(filePath);
+    if (stats.isDirectory()) {
+      await traverse(filePath, res);
+    } else if (file.endsWith(suffix)) {
+      res.push({
+        name: file,
+        updateTime: stats.mtime,
+      });
+    }
+  }
+}
+
+async function checkPoster(name) {
+  name = name.replace(".md", '')
+  let files = await fs.readdir(path.join(indexesPath, '/posters'));
+  for (let file of files) {
+    if (file === name + '.png' || file === name + '.jpg') {
+      return 'local';
+    }
+  }
+  return '';
+}
+
 async function builder() {
-  const fs = require('node:fs/promises')
-  const path = require('node:path')
-  const indexesPath = path.resolve(__dirname, '../public')
   const articlesJSON = await fs.readFile(path.join(indexesPath, 'articles.json'))
-  const articles = JSON.parse(articlesJSON)
-  articles[0]['test'] = new Date().toLocaleString()
+  let articles = JSON.parse(articlesJSON)
+  // 处理articles文件夹
+  let articlesFolderInfo = []
+  await traverse(path.join(indexesPath, '/articles'), articlesFolderInfo)
+  let names = new Set();
+  for (let folder of articlesFolderInfo) {
+    let {name, createTime, updateTime} = folder;
+    names.add(name);
+    let article = articles.find(a => a.name === name);
+    if (!article) {
+      let newArticle = {name, createTime, updateTime};
+      newArticle.id = articles.length > 0 ? articles[articles.length - 1].id + 1 : 0;
+      newArticle.isTop = false;
+      newArticle.tags = [];
+      newArticle.categories = [];
+      newArticle.poster = await checkPoster(name);
+      articles = [...articles, newArticle];
+    } else {
+      if (article.updateTime !== updateTime) {
+        article.updateTime = updateTime;
+      }
+      article.poster = await checkPoster(name);
+    }
+  }
+  articles.forEach((article, index) => {
+    if (!names.has(article.name)) {
+      articles.splice(index--, 1);
+    }
+  })
   await fs.writeFile(path.join(indexesPath, 'articles.json'), JSON.stringify(articles, null, '  '))
-  console.log(articles)
-  // const fileInfo = await fs.stat(path.join(indexesPath, 'articles.json'))
+  return true;
 }
 
 builder()
