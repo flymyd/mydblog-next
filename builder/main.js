@@ -1,6 +1,6 @@
 const fs = require('node:fs/promises')
 const path = require('node:path')
-const indexesPath = path.resolve(__dirname, '../public')
+const indexesPath = path.resolve(__dirname, '../data')
 
 async function traverse(dir, res, suffix = '.md') {
   let files = await fs.readdir(dir);
@@ -30,7 +30,7 @@ async function checkPoster(name) {
 }
 
 async function builder() {
-  const articlesJSON = await fs.readFile(path.join(indexesPath, 'articles.json'))
+  const articlesJSON = await fs.readFile(path.join(indexesPath, 'articles.json'), 'utf-8')
   let articles = JSON.parse(articlesJSON)
   // 处理articles文件夹
   let articlesFolderInfo = []
