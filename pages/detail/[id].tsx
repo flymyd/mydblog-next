@@ -8,6 +8,7 @@ import html from 'remark-html';
 import prism from 'remark-prism';
 import {dataPath, getArticlesList} from "@/utils/articlesHelper";
 import 'prismjs/themes/prism-tomorrow.min.css';
+
 export const Detail: FC<any> = ({postData}) => {
   return (
     <>
@@ -19,7 +20,7 @@ export const Detail: FC<any> = ({postData}) => {
         {postData.date}
         <br/>
         <div
-          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+          dangerouslySetInnerHTML={{__html: postData.contentHtml}}
         />
       </div>
     </>
@@ -50,7 +51,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       postData: {
         id,
         contentHtml,
-        ...matterResult.data,
+        title: matterResult.data?.title ?? '',
+        date: matterResult.data?.date?.toString() ?? '',
       }
     },
   }
