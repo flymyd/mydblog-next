@@ -101,7 +101,7 @@ JSX在react中实质上只是React.createElement的语法糖。与Vue template�
 
 在使用Vue的模板语法时，我们通常利用v-bind指令（或它的语法糖冒号:）用来给DOM元素（或组件）传递一个动态值而非字符串字面量。如：
 
-```vue
+```html
 <template>
   <button :id="koji" @click="shouting" type="button" :style="{marginLeft: '50px'}" :class="'btn-'+new Date().getTime()">
     {{ name }}
@@ -240,7 +240,7 @@ export default Clock;
 
 用Vue Options Api改写：Clock.vue
 
-```vue
+```html
 <template>
 	<div>
     <h1>Hello, world!</h1>
@@ -377,7 +377,7 @@ class Test extends React.Component {
 
 总的来说，Vue Compotision的写法很像React函数式组件。以<script setup>写法举例：
 
-```vue
+```html
 <template>
 	<div>
     <h1>{{hello}}</h1>
@@ -851,7 +851,7 @@ export default Father;
 
 Vue示例：
 
-```vue
+```html
 <!-- 父组件 -->
 <template>
 	<Coat @rape="rape"></Coat>
@@ -1443,7 +1443,7 @@ React里直接使用map在JSX中进行循环即可。当然，如果想要用for
 
 Vue示例：
 
-```vue
+```html
 <div>
 	<PostItem v-for="(item, i) in postItems" 
             :key="item.id" 
@@ -1899,7 +1899,7 @@ function App(props){
 
 Vue中router-view会渲染出路径所匹配到的视图组件：
 
-```vue
+```html
 //App.vue
 <template>
   <div>

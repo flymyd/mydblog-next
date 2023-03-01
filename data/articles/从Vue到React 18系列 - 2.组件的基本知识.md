@@ -49,7 +49,7 @@ export default Clock;
 
 用Vue Options Api改写：Clock.vue
 
-```vue
+```html
 <template>
 	<div>
     <h1>Hello, world!</h1>
@@ -186,7 +186,7 @@ class Test extends React.Component {
 
 总的来说，Vue Compotision的写法很像React函数式组件。以<script setup>写法举例：
 
-```vue
+```html
 <template>
 	<div>
     <h1>{{hello}}</h1>

@@ -1,8 +1,3 @@
----
-title: 'Two Forms of Pre-rendering'
-date: '2022-01-01'
----
-
 # HbuilderX格式化scss、less文件
 
 HbuilderX自带了jsbeautify插件以进行代码格式化。然而当我们尝试新建外部CSS文件以分割过长组件代码时会发现，以scss或less为后缀的样式表文件无法正确地被格式化。解决该问题的方法有两种：
@@ -61,3 +56,4 @@ HbuilderX自带了jsbeautify插件以进行代码格式化。然而当我们尝�
   }
   ```
 
+  

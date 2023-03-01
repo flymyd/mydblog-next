@@ -156,7 +156,7 @@ function App(props){
 
 Vue中router-view会渲染出路径所匹配到的视图组件：
 
-```vue
+```html
 //App.vue
 <template>
   <div>

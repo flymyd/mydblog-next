@@ -246,7 +246,7 @@ React里直接使用map在JSX中进行循环即可。当然，如果想要用for
 
 Vue示例：
 
-```vue
+```html
 <div>
 	<PostItem v-for="(item, i) in postItems" 
             :key="item.id" 

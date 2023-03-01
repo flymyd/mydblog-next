@@ -28,7 +28,7 @@ uniapp的模板编译器代码在/Applications/HBuilderX.app/Contents/HBuilderX/
 
 首先以一个简单的Vue模板为例，观察uniapp是如何将Vue template编译为wxml的：
 
-```Vue
+```html
 <template>
   <div @click="add();subtract(2)" @touchstart="mixin($event)">{{ num }}</div>
 </template>
@@ -36,7 +36,7 @@ uniapp的模板编译器代码在/Applications/HBuilderX.app/Contents/HBuilderX/
 
 编译结果为：
 
-```vue
+```html
 <view 
     data-event-opts="{{
         [

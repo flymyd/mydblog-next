@@ -1,23 +1,26 @@
-import {FC} from "react";
+import React, {FC, useEffect} from "react";
 import {GetStaticPaths, GetStaticProps} from "next";
 import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
 import {remark} from "remark";
 import html from 'remark-html';
+import prism from 'remark-prism';
 import {dataPath, getArticlesList} from "@/utils/articlesHelper";
-
+import 'prismjs/themes/prism-tomorrow.min.css';
 export const Detail: FC<any> = ({postData}) => {
   return (
     <>
-      <div>
+      <div className="w-full mx-0 mt-6 overflow-scroll">
         {postData.title}
         <br/>
         {postData.id}
         <br/>
         {postData.date}
         <br/>
-        <div dangerouslySetInnerHTML={{__html: postData.contentHtml}}/>
+        <div
+          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+        />
       </div>
     </>
   )
@@ -33,14 +36,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const {params} = context;
   const id = params!.id;
-  // const articlesJSON = await fs.readFile(path.join(dataPath, 'articles.json'), 'utf-8')
-  // let articles: Array<any> = JSON.parse(articlesJSON)
   let articles: Array<any> = await getArticlesList()
   const fileName = articles.filter(o => o.id == id)[0].name;
   const markdownFile = await fs.readFile(path.join(dataPath, '/articles', fileName), 'utf-8')
   const matterResult = matter(markdownFile);
   const processedContent = await remark()
-    .use(html)
+    .use(html, {sanitize: false})
+    .use(prism)
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
   return {

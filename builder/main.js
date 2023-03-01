@@ -55,11 +55,7 @@ async function builder() {
       article.poster = await checkPoster(name);
     }
   }
-  articles.forEach((article, index) => {
-    if (!names.has(article.name)) {
-      articles.splice(index--, 1);
-    }
-  })
+  articles = articles.filter(obj => Array.from(names).includes(obj.name))
   await fs.writeFile(path.join(indexesPath, 'articles.json'), JSON.stringify(articles, null, '  '))
   return true;
 }

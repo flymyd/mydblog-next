@@ -87,7 +87,7 @@ JSX在react中实质上只是React.createElement的语法糖。与Vue template�
 
 在使用Vue的模板语法时，我们通常利用v-bind指令（或它的语法糖冒号:）用来给DOM元素（或组件）传递一个动态值而非字符串字面量。如：
 
-```vue
+```html
 <template>
   <button :id="koji" @click="shouting" type="button" :style="{marginLeft: '50px'}" :class="'btn-'+new Date().getTime()">
     {{ name }}

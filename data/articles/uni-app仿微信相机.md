@@ -8,7 +8,7 @@
 
 * 使用例：ClockIn.vue（记得先在pages.json中注册）
 
-  ```vue
+  ```html
   <template>
   	<view>
       <button @click="doCapture">点击摄录</button>
@@ -35,7 +35,7 @@
 
 * 源代码：TakePhotoAndVideo.vue
 
-```vue
+```html
 <template>
   <view class="complex-camera">
     <video v-if="videoSrc" :src="videoSrc" style="width: 100vw; height:100vh;z-index: 9800;" autoplay="true" loop="true"

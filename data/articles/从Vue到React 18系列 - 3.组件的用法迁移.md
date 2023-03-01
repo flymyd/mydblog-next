@@ -85,7 +85,7 @@ export default Father;
 
 Vue示例：
 
-```vue
+```html
 <!-- 父组件 -->
 <template>
 	<Coat @rape="rape"></Coat>
