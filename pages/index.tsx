@@ -19,11 +19,3 @@ export default function Home(props: any) {
   )
 }
 
-export async function getServerSideProps(context: any) {
-  const jsonDirectory = path.join(process.cwd(), 'public')
-  const json = await fs.readFile(path.join(jsonDirectory, '/articles.json'), 'utf-8')
-  return {
-    props: {json}
-  }
-}
-
