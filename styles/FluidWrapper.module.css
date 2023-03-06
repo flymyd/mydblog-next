@@ -1,0 +1,19 @@
+.fluid-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.fluid-wrapper-child {
+  width: 980px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+  .fluid-wrapper-child {
+    width: 90%;
+  }
+}

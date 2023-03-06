@@ -8,22 +8,26 @@ import html from 'remark-html';
 import prism from 'remark-prism';
 import {dataPath, getArticlesList} from "@/utils/articlesHelper";
 import 'prismjs/themes/prism-tomorrow.min.css';
+import IndexLayout from "@/components/layouts";
+import FluidWrapper from "@/components/layouts/FluidWrapper";
 
 export const Detail: FC<any> = ({postData}) => {
   return (
-    <>
-      <div className="w-full mx-0 mt-6 overflow-scroll">
-        {postData.title}
-        <br/>
-        {postData.id}
-        <br/>
-        {postData.date}
-        <br/>
-        <div
-          dangerouslySetInnerHTML={{__html: postData.contentHtml}}
-        />
-      </div>
-    </>
+    <IndexLayout>
+      <FluidWrapper>
+        <div className="w-full mx-0 mt-6">
+          {postData.title}
+          <br/>
+          {postData.id}
+          <br/>
+          {postData.date}
+          <br/>
+          <div
+            dangerouslySetInnerHTML={{__html: postData.contentHtml}}
+          />
+        </div>
+      </FluidWrapper>
+    </IndexLayout>
   )
 }
 export const getStaticPaths: GetStaticPaths = async () => {
