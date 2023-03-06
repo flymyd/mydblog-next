@@ -39,7 +39,10 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
       <RendererProvider renderer={renderer || createDOMRenderer()}>
         <SSRProvider>
           <FluentProvider theme={webLightTheme}>
-            {loading ? <ProgressBar thickness="large" /> : <div className="loading-placeholder" style={{height: 4}}></div>}
+            {/*{loading ? <ProgressBar thickness="large" /> : <div className="loading-placeholder" style={{height: 4}}></div>}*/}
+            <div style={{position: 'fixed', width: '100%', zIndex: 100}}>
+              {loading && <ProgressBar thickness="large"></ProgressBar>}
+            </div>
             <Component {...pageProps} />
           </FluentProvider>
         </SSRProvider>

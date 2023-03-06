@@ -1,0 +1,34 @@
+.body {
+  background-color: #171717;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.full__page {
+  width: 100vw;
+  height: 100vh;
+}
+
+.animated__layers {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  & > * {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+  }
+}
+
+.dot {
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+

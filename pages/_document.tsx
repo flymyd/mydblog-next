@@ -34,7 +34,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="zh">
+      <Html lang="zh" className='scroll-smooth'>
         <Head/>
         <body>
         <Main/>
