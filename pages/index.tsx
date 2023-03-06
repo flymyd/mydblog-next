@@ -4,29 +4,25 @@ import {useScroll, animated, useSpring} from '@react-spring/web'
 import styles from '@/styles/Index.module.scss'
 import {useRouter} from "next/router";
 import NonSSRWrapper from "@/components/layouts/NonSSRWrapper";
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import IndexLayout from "@/components/layouts";
 import {Button} from "@fluentui/react-components";
 
 const PAGE_COUNT = 5
+"use client"
 export default function Home(props: any) {
   const blog = useTypewriter("MYD's blog");
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null!)
 
-  const [textStyles, textApi] = useSpring(() => ({
-    y: '100%',
-  }))
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    if (containerRef.current?.scrollTop) {
+      containerRef.current.scrollTop = 0
+    }
+  }, [])
   const {scrollYProgress} = useScroll({
     container: containerRef,
-    onChange: ({value: {scrollYProgress}}) => {
-      if (scrollYProgress > 0.7) {
-        textApi.start({y: '0'})
-      } else {
-        textApi.start({y: '100%'})
-      }
-    },
     default: {
       immediate: true,
     },
@@ -45,8 +41,10 @@ export default function Home(props: any) {
                 clipPath: scrollYProgress.to(val => `circle(${val * 100}%)`),
               }}>
               <IndexLayout>
-                test
-                <Button onClick={()=>router.push('/detail/3')}>跳转测试</Button>
+                <div className="flex flex-col items-center justify-center" style={{fontSize: 50, marginTop: 500}}>
+                  {JSON.stringify(scrollYProgress)}
+                </div>
+                <Button onClick={() => router.replace('/detail/3')}>跳转测试</Button>
               </IndexLayout>
             </animated.div>
           </div>
