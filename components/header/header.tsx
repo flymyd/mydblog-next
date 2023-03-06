@@ -4,6 +4,7 @@ import {useRouter} from "next/router";
 import FluidWrapper from "@/components/layouts/FluidWrapper";
 
 const Header: FC = () => {
+  const brand = "MYD's blog";
   const router = useRouter();
   const routes = [
     {name: '首页', link: '/', key: ''},
@@ -20,7 +21,7 @@ const Header: FC = () => {
   return (
     <FluidWrapper>
       <header className="m-1 flex flex-row justify-between items-center fluid-wrapper w-full">
-        <Text size={500} weight="bold">MYD's blog</Text>
+        <Text size={500} weight="bold">{brand}</Text>
         <div>
           {routes.map(o => <Button key={o.link}
                                    appearance={matchRoute(o) ? 'subtle' : 'subtle'}
