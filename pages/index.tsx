@@ -29,13 +29,13 @@ export default function Home(props: any) {
 
           <ParallaxLayer sticky={{start: 1, end: 3}} style={{...alignCenter, justifyContent: 'flex-start'}}>
             <div className={`${styles.card} ${styles.sticky}`}>
-              <p>I'm a sticky layer</p>
+              <p>I am a sticky layer</p>
             </div>
           </ParallaxLayer>
 
           <ParallaxLayer offset={1.5} speed={1.5} style={{...alignCenter, justifyContent: 'flex-end'}}>
             <div className={`${styles.card} ${styles.parallax} ${styles.purple}`}>
-              <p>I'm not</p>
+              <p>I am not</p>
             </div>
           </ParallaxLayer>
 
