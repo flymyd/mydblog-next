@@ -1,5 +1,5 @@
 import {CSSProperties, FC, ReactNode} from "react";
-import styles from '@/styles/FluidWrapper.module.css';
+import styles from '@/styles/fluidWrapper.module.css';
 
 const FluidWrapper: FC<{ children: ReactNode, style?: CSSProperties, }> = ({children, style}) => {
   return (

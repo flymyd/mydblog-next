@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import styles from '@/styles/Index.module.scss'
-import NonSSRWrapper from "@/components/layouts/NonSSRWrapper";
+import NonSSRWrapper from "@/components/layouts/nonSSRWrapper";
 import {Parallax, ParallaxLayer} from '@react-spring/parallax'
-import FluidWrapper from "@/components/layouts/FluidWrapper";
+import FluidWrapper from "@/components/layouts/fluidWrapper";
 import WelcomeTypeWriter from "@/components/index/welcomeTypeWriter";
 import {Text} from "@fluentui/react-components";
 
