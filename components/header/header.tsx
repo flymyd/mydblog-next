@@ -26,7 +26,7 @@ const Header: FC = () => {
           {routes.map(o => <Button key={o.link}
                                    appearance={'subtle'}
                                    style={{color: matchRoute(o) ? 'var(--colorNeutralForeground1)' : '#696969'}}
-                                   onClick={() => router.push(o.link)}>{o.name}</Button>)}
+                                   onClick={() => router.replace(o.link)}>{o.name}</Button>)}
         </div>
       </header>
     </FluidWrapper>
