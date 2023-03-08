@@ -4,13 +4,15 @@ import dynamic from "next/dynamic";
 // const shellText = 'guest@Shimokita:~$ ';
 const shellText = '> ';
 const welcomeText = [
+  "【注意！该站仍在建设中！】",
+  "【现行版本：https://blog.van.ac.cn】",
   "Welcome to Flymyd's Blog",
   "欢迎来到夏雪冬花的博客",
   "这是一个兴趣使然的小站",
   "随手记录前端、DIY和一些杂七杂八的东西",
-  // "由Next.js驱动",
-  // "由Vercel提供服务，Cloudflare提供加速",
-  "↓ 向下拖动，进入主站"
+  "由Next.js驱动",
+  "由Vercel提供服务，Cloudflare提供加速",
+  "↓ 向下滑动，进入主站"
 ]
   .map(t => shellText + t);
 const typeDelay = 100;

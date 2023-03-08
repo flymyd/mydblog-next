@@ -7,7 +7,7 @@ const Header: FC = () => {
   const brand = "MYD's blog";
   const router = useRouter();
   const routes = [
-    {name: '首页', link: '/', key: ''},
+    {name: '首页', link: '/#blog-index', key: '/'},
     {name: '归档', link: '/archives/1', key: 'archives'},
     {name: '分类', link: '/categories', key: 'categories'},
     {name: '友情链接', link: '/friendlyLink', key: 'friendlyLink'},
@@ -16,7 +16,7 @@ const Header: FC = () => {
   ]
   const matchRoute = (route: any) => {
     const {pathname} = router;
-    return route.key == "" ? route.link == pathname : pathname.startsWith("/" + route.key + "/") || null;
+    return route.key == "/" ? route.key == pathname : pathname.startsWith("/" + route.key) || null;
   }
   return (
     <FluidWrapper>
@@ -26,7 +26,7 @@ const Header: FC = () => {
           {routes.map(o => <Button key={o.link}
                                    appearance={'subtle'}
                                    style={{color: matchRoute(o) ? 'var(--colorNeutralForeground1)' : '#696969'}}
-                                   onClick={() => router.replace(o.link)}>{o.name}</Button>)}
+                                   onClick={() => router.push(o.link)}>{o.name}</Button>)}
         </div>
       </header>
     </FluidWrapper>
