@@ -4,6 +4,7 @@ import FluidWrapper from "@/components/layouts/fluidWrapper";
 import WelcomeTypeWriter from "@/components/index/welcomeTypeWriter";
 import IndexLayout from "@/components/layouts";
 import {useRouter} from "next/router";
+import {Button} from "@fluentui/react-components";
 
 export default function Home(props: any) {
   const router = useRouter()
@@ -29,7 +30,7 @@ export default function Home(props: any) {
           <IndexLayout>
             <FluidWrapper>
               <div>
-                {router.asPath}
+                <Button onClick={() => router.push('/detail/2')}>测试跳转文章页</Button>
               </div>
             </FluidWrapper>
           </IndexLayout>
