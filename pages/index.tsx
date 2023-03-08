@@ -5,8 +5,13 @@ import {Parallax, ParallaxLayer} from '@react-spring/parallax'
 import FluidWrapper from "@/components/layouts/fluidWrapper";
 import WelcomeTypeWriter from "@/components/index/welcomeTypeWriter";
 import {Text} from "@fluentui/react-components";
+import {useSpring, animated, useTransition} from "@react-spring/web";
+import {useRef} from "react";
+import IndexLayout from "@/components/layouts";
 
 const alignCenter = {display: 'flex', alignItems: 'center'}
+const url = (name: string, wrap = false) =>
+  `${wrap ? 'url(' : ''}https://awv3node-homepage.surge.sh/build/assets/${name}.svg${wrap ? ')' : ''}`
 
 export default function Home(props: any) {
   return (
@@ -15,37 +20,23 @@ export default function Home(props: any) {
         <title>下北沢研究院</title>
       </Head>
       <NonSSRWrapper>
-        {/*<div className={styles.background} />*/}
-        <Parallax pages={5}>
-          <ParallaxLayer offset={0} speed={0.5}>
+        <Parallax pages={2}>
+          <ParallaxLayer offset={0} speed={0} style={{background: '#000'}}>
             <FluidWrapper>
               <div className="flex flex-col mt-5">
-                <h1 className="font-bold text-5xl my-5" style={{fontFamily: 'FounderPixels, system-ui'}}>MYD&apos;s
-                  Blog</h1>
+                <h1 className="font-bold text-5xl my-5" style={{fontFamily: 'ZpixLite, system-ui', color: '#32CD32'}}>Hi
+                  there</h1>
                 <WelcomeTypeWriter style={{width: "fit-content"}}/>
               </div>
             </FluidWrapper>
           </ParallaxLayer>
+          <ParallaxLayer offset={0.8} speed={0} style={{background: "linear-gradient(#000, #BBB)"}}></ParallaxLayer>
+          <ParallaxLayer offset={1} speed={0} style={{backgroundColor: "#fff"}}>
+            <IndexLayout>
 
-          <ParallaxLayer sticky={{start: 1, end: 3}} style={{...alignCenter, justifyContent: 'flex-start'}}>
-            <div className={`${styles.card} ${styles.sticky}`}>
-              <p>I am a sticky layer</p>
-            </div>
-          </ParallaxLayer>
-
-          <ParallaxLayer offset={1.5} speed={1.5} style={{...alignCenter, justifyContent: 'flex-end'}}>
-            <div className={`${styles.card} ${styles.parallax} ${styles.purple}`}>
-              <p>I am not</p>
-            </div>
-          </ParallaxLayer>
-
-          <ParallaxLayer offset={2.5} speed={1.5} style={{...alignCenter, justifyContent: 'flex-end'}}>
-            <div className={`${styles.card} ${styles.parallax} ${styles.blue}`}>
-              <p>Neither am I</p>
-            </div>
+            </IndexLayout>
           </ParallaxLayer>
         </Parallax>
-
       </NonSSRWrapper>
     </>
   )

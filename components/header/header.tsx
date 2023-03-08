@@ -24,7 +24,7 @@ const Header: FC = () => {
         <Text size={500} weight="bold">{brand}</Text>
         <div>
           {routes.map(o => <Button key={o.link}
-                                   appearance={matchRoute(o) ? 'subtle' : 'subtle'}
+                                   appearance={'subtle'}
                                    style={{color: matchRoute(o) ? 'var(--colorNeutralForeground1)' : '#696969'}}
                                    onClick={() => router.replace(o.link)}>{o.name}</Button>)}
         </div>

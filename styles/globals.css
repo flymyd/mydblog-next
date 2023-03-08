@@ -21,8 +21,22 @@ body {
 }
 
 @font-face {
-  font-family: "FounderPixelsLite";
-  src: url('./fonts/founder-pixels-lite.ttf');
+  font-family: "ZpixLite";
+  src: url('./fonts/zpix-lite.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SourceHansLite";
+  src: url('./fonts/SourceHanSansCN-Lite.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SourceHans";
+  src: url('./fonts/SourceHanSansCN-Medium.ttf');
   font-weight: normal;
   font-style: normal;
 }

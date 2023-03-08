@@ -4985,11 +4985,6 @@ react-typewriter-effect@^1.1.0:
     style-loader "^1.0.0"
     webpack "^4.41.2"
 
-react-typewriter-hook@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmmirror.com/react-typewriter-hook/-/react-typewriter-hook-1.0.1.tgz#f16d7ce6fb2b5b131c345bf38ad34ccc6d69b8d3"
-  integrity sha512-XOBBkI1fuZRH5OBpJ9qZuXxMZ1T8EgU2VsbKwR+2mvA5rMVjMtbTg2iRNFxpiYY3ClNQ5fBegAaCqRLsNNsvfg==
-
 react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmmirror.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
