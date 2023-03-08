@@ -2,7 +2,7 @@
 import {FC, useEffect} from "react";
 import {Button, Text} from "@fluentui/react-components";
 import {useRouter} from "next/router";
-import { useRouter as useNavi } from 'next/navigation';
+import {useRouter as useNavi} from 'next/navigation';
 import FluidWrapper from "@/components/layouts/fluidWrapper";
 
 const Header: FC = () => {
@@ -29,7 +29,7 @@ const Header: FC = () => {
           {routes.map(o => <Button key={o.link}
                                    appearance={'subtle'}
                                    style={{color: matchRoute(o) ? 'var(--colorNeutralForeground1)' : '#696969'}}
-                                   onClick={() => navi.replace(o.link)}>{o.name}</Button>)}
+                                   onClick={() => o.key === "/" ? navi.replace(o.link) : navi.push(o.link)}>{o.name}</Button>)}
         </div>
       </header>
     </FluidWrapper>
