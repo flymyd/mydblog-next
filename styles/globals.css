@@ -21,8 +21,8 @@ body {
 }
 
 @font-face {
-  font-family: "FounderPixels";
-  src: url('./fonts/founder-pixels-12.ttf');
+  font-family: "FounderPixelsLite";
+  src: url('./fonts/founder-pixels-lite.ttf');
   font-weight: normal;
   font-style: normal;
 }

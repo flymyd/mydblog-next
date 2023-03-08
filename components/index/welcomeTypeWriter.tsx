@@ -27,7 +27,7 @@ const WelcomeTypeWriter: FC<{ style?: CSSProperties }> = ({style}) => {
     }
     typewriterList.push(<TypeWriterEffect
       key={i}
-      textStyle={{fontFamily: 'FounderPixels', fontSize: 24, lineHeight: 1.5, marginBottom: 10}}
+      textStyle={{fontFamily: 'FounderPixelsLite', fontSize: 24, lineHeight: 1.5, marginBottom: 10}}
       startDelay={lastDelay}
       cursorColor="black"
       text={o}
