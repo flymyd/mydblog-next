@@ -3,7 +3,7 @@ import {FC, useEffect} from "react";
 import {Button, Text} from "@fluentui/react-components";
 import {useRouter} from "next/router";
 import {useRouter as useNavi} from 'next/navigation';
-import FluidWrapper from "@/components/layouts/fluidWrapper";
+import FluidWrapper from "@/components/layouts/FluidWrapper";
 
 const Header: FC = () => {
   const brand = "MYD's blog";

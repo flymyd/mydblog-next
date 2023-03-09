@@ -8,8 +8,8 @@ import html from 'remark-html';
 import prism from 'remark-prism';
 import {dataPath, getArticlesList} from "@/utils/articlesHelper";
 import 'prismjs/themes/prism-tomorrow.min.css';
-import IndexLayout from "@/components/layouts";
-import FluidWrapper from "@/components/layouts/fluidWrapper";
+import IndexLayout from "@/components/layouts/IndexLayout";
+import FluidWrapper from "@/components/layouts/FluidWrapper";
 
 export const Detail: FC<any> = ({postData}) => {
   return (

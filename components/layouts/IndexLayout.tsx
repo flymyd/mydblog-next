@@ -1,5 +1,5 @@
 import {CSSProperties, FC, ReactNode} from "react";
-import Header from '@/components/header/header';
+import Header from '@/components/header/Header';
 import Head from "next/head";
 
 const IndexLayout: FC<{ children: ReactNode, style?: CSSProperties }> = ({children, style}) => {

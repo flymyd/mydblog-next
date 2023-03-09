@@ -1,5 +1,5 @@
 import {FC} from "react";
-import IndexLayout from "@/components/layouts";
+import IndexLayout from "@/components/layouts/IndexLayout";
 
 const Projects: FC = () => {
   return (

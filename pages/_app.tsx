@@ -43,7 +43,9 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
             <div style={{position: 'fixed', width: '100%', zIndex: 100}}>
               {loading && <ProgressBar thickness="large"></ProgressBar>}
             </div>
-            <Component {...pageProps} />
+            <div>
+              <Component {...pageProps} />
+            </div>
           </FluentProvider>
         </SSRProvider>
       </RendererProvider>

@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {useRouter} from "next/router";
-import IndexLayout from "@/components/layouts";
+import IndexLayout from "@/components/layouts/IndexLayout";
 
 const Archives: FC = () => {
   const router = useRouter();
