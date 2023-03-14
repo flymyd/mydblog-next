@@ -6,17 +6,28 @@ import IndexLayout from "@/components/layouts/IndexLayout";
 import {useRouter} from "next/router";
 import {Button} from "@fluentui/react-components";
 
+import {useEffect, useRef, useState} from "react";
+import useScroll from "@/hooks/useScroll";
+import {func} from "prop-types";
+
 export default function Home(props: any) {
   const router = useRouter()
+  const scrollRef = useRef(null)
+  const [x, y] = useScroll(scrollRef)
+  const [hideWelcome, setHideWelcome] = useState(false)
+  useEffect(() => {
+    if (Math.ceil(y) === Math.ceil(window.innerHeight)) {
+      setHideWelcome(true)
+    }
+  }, [y])
   return (
     <>
       <Head>
         <title>下北沢研究院</title>
       </Head>
-      <main className="h-screen w-screen" style={{scrollSnapType: 'y mandatory', overflowY: 'auto'}}>
+      <main className="h-screen w-screen" style={{scrollSnapType: 'y mandatory', overflowY: 'auto'}} ref={scrollRef}>
         {
-          //不从blog-index锚点进入时有欢迎页
-          router.asPath.indexOf('blog-index') !== -1 ? <></> :
+          router.asPath.indexOf('blog-index') !== -1 || hideWelcome ? <></> :
             <section className="snap-start h-screen w-full bg-black">
               <FluidWrapper>
                 <div className="flex flex-col mt-5">

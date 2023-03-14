@@ -3,7 +3,7 @@ import IndexLayout from "@/components/layouts/IndexLayout";
 
 const FriendlyLink: FC = () => {
   return (
-    <IndexLayout>
+    <IndexLayout style={{height: '200vh'}}>
       友情链接
     </IndexLayout>
   )
