@@ -1,3 +1,7 @@
+interface AnyInterface {
+  [props: string]: any;
+}
+
 declare module "react-typewriter-effect" {
   import React from "react";
 
@@ -13,5 +17,10 @@ declare module "react-typewriter-effect" {
   }
 
   export default class TypeWriterEffect extends React.Component<TypeWriterEffectProps> {
+  }
+}
+declare module "node-pop3" {
+  export default class Pop3Command implements AnyInterface {
+    constructor(any){}
   }
 }
