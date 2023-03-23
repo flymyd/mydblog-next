@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {CSSProperties, FC} from "react";
 import {useMediaQuery} from "@material-ui/core";
 import {Client, HydrationProvider, Server} from "react-hydration-provider";
 import PCHeader from "@/components/header/PCHeader";
@@ -8,6 +8,7 @@ import {useRouter} from "next/router";
 import {useRouter as useNavi} from "next/dist/client/components/navigation";
 import {HeaderProps} from "@/components/header/HeaderProps";
 import {FluentProvider, webDarkTheme} from "@fluentui/react-components";
+import useScrollTop from "@/hooks/useScrollTop";
 
 const routes = [
   {name: '首页', link: '/#blog-index', key: '/'},
@@ -33,9 +34,14 @@ const Header: FC = () => {
         <PCHeader {...headerProps}></PCHeader>
       </Server>
       <Client>
-        {
-          isMobile ? <MobileHeader {...headerProps}></MobileHeader> : <PCHeader {...headerProps}></PCHeader>
-        }
+        <div style={{
+          position: "fixed",
+          width: '100%'
+        }}>
+          {
+            isMobile ? <MobileHeader {...headerProps}></MobileHeader> : <PCHeader {...headerProps}></PCHeader>
+          }
+        </div>
       </Client>
     </HydrationProvider>
   )

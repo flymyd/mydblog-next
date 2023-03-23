@@ -21,8 +21,8 @@ const MobileHeader: FC<HeaderProps> = (props) => {
     }
   })
   return (
-    <div className="my-2 flex flex-row items-center bg-black w-full z-50 text-white h-[44px]">
-      <div className="pl-2 w-screen flex flex-row items-center">
+    <div className="flex flex-row items-center w-full z-50 bg-[#333] text-white h-[44px]">
+      <div className="pl-2 ml-2 w-screen flex flex-row items-center">
         <Text size={400} weight="medium">
           <Icon className="mr-2" onClick={() => setOpenDrawer((prevState: boolean) => (!prevState))}
                 icon={openDrawer ? crossIcon : threeLineHorizontal}/>
@@ -30,7 +30,7 @@ const MobileHeader: FC<HeaderProps> = (props) => {
         <Text size={400} weight="medium">{props.brand}</Text>
       </div>
       <animated.div style={animation}
-                    className="flex flex-row justify-center items-start fixed w-screen pt-5 overflow-hidden bg-black top-[44px] z-50">
+                    className="flex flex-row justify-center items-start fixed w-screen pt-5 overflow-hidden bg-[#333] top-[44px] z-50">
         <div style={{width: '90%'}} className="flex flex-col justify-center items-start">
           {props.routes.map(o => <Text key={o.link}
                                        size={400}
