@@ -1,37 +1,43 @@
-'use client';
-import {FC, useEffect} from "react";
-import {Button, Text} from "@fluentui/react-components";
-import {useRouter} from "next/router";
-import {useRouter as useNavi} from 'next/navigation';
+import {FC, useEffect, useState} from "react";
+import {useMediaQuery} from "@material-ui/core";
+import {Client, HydrationProvider, Server} from "react-hydration-provider";
+import PCHeader from "@/components/header/PCHeader";
+import MobileHeader from "@/components/header/MobileHeader";
 import FluidWrapper from "@/components/layouts/FluidWrapper";
+import {useRouter} from "next/router";
+import {useRouter as useNavi} from "next/dist/client/components/navigation";
+import {HeaderProps} from "@/components/header/HeaderProps";
 
+const routes = [
+  {name: '首页', link: '/#blog-index', key: '/'},
+  {name: '归档', link: '/archives/1', key: 'archives'},
+  {name: '分类', link: '/categories', key: 'categories'},
+  {name: '友情链接', link: '/friendlyLink', key: 'friendlyLink'},
+  {name: 'Projects', link: '/projects', key: 'projects'},
+  {name: '关于我', link: '/about', key: 'about'},
+]
+const brand = "MYD's blog";
 const Header: FC = () => {
-  const brand = "MYD's blog";
+  const isMobile = useMediaQuery("(max-width:768px)");
   const router = useRouter();
   const navi = useNavi();
-  const routes = [
-    {name: '首页', link: '/#blog-index', key: '/'},
-    {name: '归档', link: '/archives/1', key: 'archives'},
-    {name: '分类', link: '/categories', key: 'categories'},
-    {name: '友情链接', link: '/friendlyLink', key: 'friendlyLink'},
-    {name: 'Projects', link: '/projects', key: 'projects'},
-    {name: '关于我', link: '/about', key: 'about'},
-  ]
   const matchRoute = (route: any) => {
     const {pathname} = router;
     return route.key == "/" ? route.key == pathname : pathname.startsWith("/" + route.key) || null;
   }
+  const headerProps: HeaderProps = {routes, brand, matchRoute, navi, router}
   return (
     <FluidWrapper>
-      <header className="m-1 flex flex-row justify-between items-center fluid-wrapper w-full z-50">
-        <Text size={500} weight="bold">{brand}</Text>
-        <div>
-          {routes.map(o => <Button key={o.link}
-                                   appearance={'subtle'}
-                                   style={{color: matchRoute(o) ? 'var(--colorNeutralForeground1)' : '#696969'}}
-                                   onClick={() => o.key === "/" ? navi.replace(o.link) : navi.push(o.link)}>{o.name}</Button>)}
-        </div>
-      </header>
+      <HydrationProvider>
+        <Server>
+          <PCHeader {...headerProps}></PCHeader>
+        </Server>
+        <Client>
+          {
+            isMobile ? <MobileHeader {...headerProps}></MobileHeader> : <PCHeader {...headerProps}></PCHeader>
+          }
+        </Client>
+      </HydrationProvider>
     </FluidWrapper>
   )
 }
