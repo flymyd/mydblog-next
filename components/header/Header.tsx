@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from "react";
+import {FC} from "react";
 import {useMediaQuery} from "@material-ui/core";
 import {Client, HydrationProvider, Server} from "react-hydration-provider";
 import PCHeader from "@/components/header/PCHeader";
@@ -7,6 +7,7 @@ import FluidWrapper from "@/components/layouts/FluidWrapper";
 import {useRouter} from "next/router";
 import {useRouter as useNavi} from "next/dist/client/components/navigation";
 import {HeaderProps} from "@/components/header/HeaderProps";
+import {FluentProvider, webDarkTheme} from "@fluentui/react-components";
 
 const routes = [
   {name: '首页', link: '/#blog-index', key: '/'},
@@ -27,18 +28,16 @@ const Header: FC = () => {
   }
   const headerProps: HeaderProps = {routes, brand, matchRoute, navi, router}
   return (
-    <FluidWrapper>
-      <HydrationProvider>
-        <Server>
-          <PCHeader {...headerProps}></PCHeader>
-        </Server>
-        <Client>
-          {
-            isMobile ? <MobileHeader {...headerProps}></MobileHeader> : <PCHeader {...headerProps}></PCHeader>
-          }
-        </Client>
-      </HydrationProvider>
-    </FluidWrapper>
+    <HydrationProvider>
+      <Server>
+        <PCHeader {...headerProps}></PCHeader>
+      </Server>
+      <Client>
+        {
+          isMobile ? <MobileHeader {...headerProps}></MobileHeader> : <PCHeader {...headerProps}></PCHeader>
+        }
+      </Client>
+    </HydrationProvider>
   )
 }
 export default Header;
