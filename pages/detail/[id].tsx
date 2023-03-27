@@ -15,7 +15,7 @@ export const Detail: FC<any> = ({postData}) => {
   return (
     <IndexLayout>
       <FluidWrapper>
-        <div className="w-full mx-0 mt-6">
+        <div className="w-full mx-0 mt-6 myd-md">
           {postData.title}
           <br/>
           {postData.id}
@@ -23,6 +23,7 @@ export const Detail: FC<any> = ({postData}) => {
           {postData.date}
           <br/>
           <div
+            className="myd-md-content"
             dangerouslySetInnerHTML={{__html: postData.contentHtml}}
           />
         </div>

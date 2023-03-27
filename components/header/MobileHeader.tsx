@@ -1,6 +1,6 @@
-import {FC, ReactElement, useState} from "react";
+import {FC, useState} from "react";
 import {HeaderProps} from "@/components/header/HeaderProps";
-import {Button, Text} from "@fluentui/react-components";
+import {Text} from "@fluentui/react-components";
 import useWatch from "@/hooks/useWatch";
 import {useSpring, animated} from "@react-spring/web";
 import {Icon} from '@iconify/react';
@@ -27,7 +27,7 @@ const MobileHeader: FC<HeaderProps> = (props) => {
           <Icon className="mr-2" onClick={() => setOpenDrawer((prevState: boolean) => (!prevState))}
                 icon={openDrawer ? crossIcon : threeLineHorizontal}/>
         </Text>
-        <Text size={400} weight="medium">{props.brand}</Text>
+        <Text size={400} className="select-none cursor-pointer" weight="medium" onClick={()=>props.navi.push('/')}>{props.brand}</Text>
       </div>
       <animated.div style={animation}
                     className="flex flex-row justify-center items-start fixed w-screen pt-5 overflow-hidden bg-[#333] top-[44px] z-50">

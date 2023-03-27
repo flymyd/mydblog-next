@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.15.5",
+    "@fluentui/react-components": "^9.18.6",
     "@material-ui/core": "^4.12.4",
     "@next/font": "13.1.6",
     "@react-spring/parallax": "^9.7.1",
@@ -24,7 +24,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hydration-provider": "^1.0.2",
-    "react-typewriter-effect": "^1.1.0",
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
     "remark-prism": "^1.3.6",

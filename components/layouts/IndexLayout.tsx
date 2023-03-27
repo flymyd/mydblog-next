@@ -11,7 +11,7 @@ const IndexLayout: FC<{ children: ReactNode, style?: CSSProperties }> = ({childr
       <header>
         <Header/>
       </header>
-      <main style={{...style, paddingTop: 44}}>
+      <main style={{...style, paddingTop: 47.6}}>
         {children}
       </main>
     </>
