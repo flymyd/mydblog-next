@@ -6,7 +6,7 @@ import FluidWrapper from "@/components/layouts/FluidWrapper";
 const PCHeader: FC<HeaderProps> = (props) => {
   return (
     <FluidWrapper style={{background: '#333', color: '#FFF'}}>
-      <div className="my-2 flex flex-row justify-between items-center fluid-wrapper w-full z-50">
+      <div className="flex flex-row justify-between items-center fluid-wrapper w-full z-50 h-[44px]">
         <Text className="select-none cursor-pointer" size={500} weight="bold" onClick={()=>props.navi.push('/')}>{props.brand}</Text>
         <div>
           {props.routes.map(o => <Button key={o.link}
