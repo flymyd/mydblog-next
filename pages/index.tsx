@@ -21,17 +21,24 @@ export default function Home(props: any) {
       <IndexLayout>
         <main className="h-screen w-screen" style={{scrollSnapType: 'y mandatory', overflowY: 'scroll'}} ref={mainRef}>
           <section className="snap-start h-screen w-screen relative">
-            <video src="https://mydblog.obs.cn-east-3.myhuaweicloud.com/pl.mp4" muted autoPlay loop controls={false}
-                   style={{width: '100vw', height: '100vh', objectFit: 'cover', filter: 'blur(3px)'}}/>
-            <FluidWrapper style={{zIndex: 100, position: 'absolute', top: 400, left: '0'}}>
+            <video src="https://mydblog.obs.cn-east-3.myhuaweicloud.com/pl.mp4" muted autoPlay loop
+                   controls={false}
+                   playsInline
+                   style={{
+                     width: '100vw',
+                     height: '100vh',
+                     objectFit: 'cover',
+                     filter: 'blur(5px) brightness(120%) opacity(0.5)'
+                   }}/>
+            <FluidWrapper style={{zIndex: 100, position: 'absolute', top: 400, left: 0, width: '100%'}}>
               <div className="py-5">
-                测试123123
+                <span style={{fontSize: 30}}>测试文字一Lorem Ipsum</span>
               </div>
             </FluidWrapper>
           </section>
           <section className="snap-start min-h-screen w-full bg-green-700 opacity-25">
             <FluidWrapper>
-              <span style={{color: '#FFF'}}>asdasdad</span>
+              <span style={{color: '#FFF'}}>测试页面2</span>
             </FluidWrapper>
           </section>
         </main>
