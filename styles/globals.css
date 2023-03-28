@@ -23,6 +23,24 @@ body {
   box-sizing: border-box;
 }
 
+.h-layout {
+  height: calc(100vh - 44px);
+}
+
+.min-h-layout {
+  min-height: calc(100vh - 44px);
+}
+
+@supports (-webkit-touch-callout: none) {
+  .h-layout {
+    height: -webkit-fill-available;
+  }
+
+  .min-h-layout {
+    min-height: -webkit-fill-available;
+  }
+}
+
 @font-face {
   font-family: "ZpixLite";
   src: url('./fonts/zpix-lite.ttf');
