@@ -43,3 +43,10 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "HomeXingSC";
+  src: url('./fonts/home-xing-sc.ttf');
+  font-weight: normal;
+  font-style: normal;
+}

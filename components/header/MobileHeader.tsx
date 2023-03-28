@@ -27,7 +27,7 @@ const MobileHeader: FC<HeaderProps> = (props) => {
           <Icon className="mr-2" onClick={() => setOpenDrawer((prevState: boolean) => (!prevState))}
                 icon={openDrawer ? crossIcon : threeLineHorizontal}/>
         </Text>
-        <Text size={400} className="select-none cursor-pointer" weight="medium" onClick={()=>props.navi.push('/')}>{props.brand}</Text>
+        <Text size={400} className="select-none cursor-pointer" weight="medium">{props.brand}</Text>
       </div>
       <animated.div style={animation}
                     className="flex flex-row justify-center items-start fixed w-screen pt-5 overflow-hidden bg-[#333] top-[44px] z-50">

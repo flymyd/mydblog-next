@@ -4,8 +4,9 @@ import FluidWrapper from "@/components/layouts/FluidWrapper";
 import IndexLayout from "@/components/layouts/IndexLayout";
 import {useRouter} from "next/router";
 import useScroll from "@/hooks/useScroll";
-import {useEffect, useRef} from "react";
+import {CSSProperties, useEffect, useRef} from "react";
 
+const homeTextStyle: CSSProperties = {fontSize: 60, lineHeight: '1em', width: '1em', fontFamily: 'HomeXingSC'}
 export default function Home(props: any) {
   const router = useRouter()
   const mainRef = useRef(null)
@@ -19,24 +20,24 @@ export default function Home(props: any) {
         <title>下北沢研究院</title>
       </Head>
       <IndexLayout>
-        <main className="h-screen w-screen" style={{scrollSnapType: 'y mandatory', overflowY: 'scroll'}} ref={mainRef}>
-          <section className="snap-start h-screen w-screen relative">
-            <video src="https://mydblog.obs.cn-east-3.myhuaweicloud.com/pl.mp4" muted autoPlay loop
-                   controls={false}
-                   playsInline
-                   style={{
-                     width: '100vw',
-                     height: '100vh',
-                     objectFit: 'cover',
-                     filter: 'blur(5px) brightness(120%) opacity(0.5)'
-                   }}/>
-            <FluidWrapper style={{zIndex: 100, position: 'absolute', top: 400, left: 0, width: '100%'}}>
-              <div className="py-5">
-                <span style={{fontSize: 30}}>测试文字一Lorem Ipsum</span>
+        <main className="h-layout w-screen" style={{scrollSnapType: 'y mandatory', overflowY: 'scroll'}} ref={mainRef}>
+          <section className="snap-center h-layout w-screen relative">
+            <video poster="/home-preload.jpg" src="https://mydblog.obs.cn-east-3.myhuaweicloud.com/home-mini.mp4"
+                   autoPlay loop playsInline muted controls={false}
+                   className="h-layout w-screen object-cover"
+                   style={{filter: 'blur(7px) brightness(125%) opacity(0.3)'}}/>
+            <FluidWrapper style={{zIndex: 100, position: 'absolute', top: 44, left: 0, width: '100%'}}>
+              <div className="flex flex-row">
+                <div style={homeTextStyle}>
+                  <span>携剑去</span>
+                </div>
+                <div style={homeTextStyle}>
+                  <span>辞别楼外青山</span>
+                </div>
               </div>
             </FluidWrapper>
           </section>
-          <section className="snap-start min-h-screen w-full bg-green-700 opacity-25">
+          <section className="snap-start min-h-layout w-full bg-green-700 opacity-25">
             <FluidWrapper>
               <span style={{color: '#FFF'}}>测试页面2</span>
             </FluidWrapper>
