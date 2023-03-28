@@ -5,17 +5,14 @@ import IndexLayout from "@/components/layouts/IndexLayout";
 import {useRouter} from "next/router";
 import useScroll from "@/hooks/useScroll";
 import {CSSProperties, useEffect, useRef} from "react";
-import localFont from '@next/font/local'
 
-const homeFont = localFont({src: '../styles/fonts/home-xing-sc.ttf'})
-const homeTextStyle: CSSProperties = {fontSize: 60, lineHeight: '1em', width: '1em'}
-// const homeTextStyle: CSSProperties = {fontSize: 60, lineHeight: '1em', width: '1em', fontFamily: 'HomeXingSC'}
+const homeTextStyle: CSSProperties = {fontSize: 60, lineHeight: '1em', width: '1em', fontFamily: 'HomeXingSC'}
 export default function Home(props: any) {
   const router = useRouter()
   const mainRef = useRef(null)
   const [x, y] = useScroll(mainRef)
   useEffect(() => {
-    console.log(y)
+    // console.log(y)
   })
   return (
     <>
@@ -29,14 +26,23 @@ export default function Home(props: any) {
                    autoPlay loop playsInline muted controls={false}
                    className="h-layout w-screen object-cover"
                    style={{filter: 'blur(7px) brightness(125%) opacity(0.3)'}}/>
-            <FluidWrapper style={{zIndex: 100, position: 'absolute', top: 44, left: 0, width: '100%'}}>
-              <div className="flex flex-row">
-                <div style={homeTextStyle} className={homeFont.className}>
+            <FluidWrapper style={{zIndex: 100, position: 'absolute', top: 44, left: 0, width: '100%', height: '100%'}}
+                          innerStyle={{
+                            flexDirection: 'column',
+                            alignItems: 'flex-start',
+                            justifyContent: 'space-around',
+                            height: '100%'
+                          }}>
+              <div className="flex flex-row justify-center w-full">
+                <div style={homeTextStyle}>
                   <span>携剑去</span>
                 </div>
-                <div style={homeTextStyle} className={homeFont.className}>
+                <div style={homeTextStyle}>
                   <span>辞别楼外青山</span>
                 </div>
+              </div>
+              <div className="flex flex-row items-center justify-center w-full">
+                向下滚动，进入主页 ↓
               </div>
             </FluidWrapper>
           </section>
