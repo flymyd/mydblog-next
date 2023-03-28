@@ -42,7 +42,7 @@ export default function Home(props: any) {
                 </div>
               </div>
               <div className="flex flex-row items-center justify-center w-full">
-                向下滚动，进入主页 ↓
+                向下滚动  ，进入主页 ↓
               </div>
             </FluidWrapper>
           </section>
