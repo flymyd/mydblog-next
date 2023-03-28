@@ -5,8 +5,11 @@ import IndexLayout from "@/components/layouts/IndexLayout";
 import {useRouter} from "next/router";
 import useScroll from "@/hooks/useScroll";
 import {CSSProperties, useEffect, useRef} from "react";
+import localFont from '@next/font/local'
 
-const homeTextStyle: CSSProperties = {fontSize: 60, lineHeight: '1em', width: '1em', fontFamily: 'HomeXingSC'}
+const homeFont = localFont({src: '../styles/fonts/home-xing-sc.ttf'})
+const homeTextStyle: CSSProperties = {fontSize: 60, lineHeight: '1em', width: '1em'}
+// const homeTextStyle: CSSProperties = {fontSize: 60, lineHeight: '1em', width: '1em', fontFamily: 'HomeXingSC'}
 export default function Home(props: any) {
   const router = useRouter()
   const mainRef = useRef(null)
@@ -28,10 +31,10 @@ export default function Home(props: any) {
                    style={{filter: 'blur(7px) brightness(125%) opacity(0.3)'}}/>
             <FluidWrapper style={{zIndex: 100, position: 'absolute', top: 44, left: 0, width: '100%'}}>
               <div className="flex flex-row">
-                <div style={homeTextStyle}>
+                <div style={homeTextStyle} className={homeFont.className}>
                   <span>携剑去</span>
                 </div>
-                <div style={homeTextStyle}>
+                <div style={homeTextStyle} className={homeFont.className}>
                   <span>辞别楼外青山</span>
                 </div>
               </div>
