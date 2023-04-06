@@ -1,6 +1,7 @@
 import {CSSProperties, FC} from "react";
 import {ArticleCardType} from "@/types/ArticleCardType";
 import styles from "@/styles/ArticleCard.module.scss";
+import {useRouter as useNavi} from "next/dist/client/components/navigation";
 
 const dateStyle = {fontSize: "14px", fontWeight: 600, color: "#6e6e73", lineHeight: '2em'}
 const articleWrapperStyle: CSSProperties = {
@@ -10,16 +11,15 @@ const articleWrapperStyle: CSSProperties = {
   cursor: 'pointer',
   userSelect: 'none',
   width: '100%',
-  // border: 'solid 1px #D3D3D3'
 };
 const getTextWrapperStyle = (type: any) => {
   return {flex: 1, padding: type == "small" ? 24 : 32, minHeight: type === 'small' ? 140 : 174}
 }
 const ArticleCard: FC<ArticleCardType> = (props: ArticleCardType, context) => {
   const {type, title, updateTime, poster, tags, id} = props;
-  // const navigate = useNavigate();
+  const navi = useNavi();
   const toDetail = (id: number) => {
-    // navigate('/Detail?id=' + id)
+    navi.push('/detail/' + id)
   }
   return (
     // 大号卡片使用左右布局，文字纵向两端对齐

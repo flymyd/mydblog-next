@@ -18,7 +18,10 @@ type EnhancedAppProps = AppProps & { renderer?: GriffelRenderer };
 function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    const start = () => setLoading(true)
+    const start = () => {
+      console.log("loading")
+      setLoading(true)
+    }
     const end = () => setLoading(false)
     Router.events.on('routeChangeStart', start)
     Router.events.on('routeChangeComplete', end)
@@ -41,7 +44,7 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
         <SSRProvider>
           <FluentProvider theme={webLightTheme}>
             {/*{loading ? <ProgressBar thickness="large" /> : <div className="loading-placeholder" style={{height: 4}}></div>}*/}
-            <div style={{position: 'fixed', width: '100%', zIndex: 100}}>
+            <div style={{position: 'fixed', width: '100%', zIndex: 10000}}>
               {loading && <ProgressBar thickness="large"></ProgressBar>}
             </div>
             <div>
