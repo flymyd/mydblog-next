@@ -1,0 +1,75 @@
+.card-root {
+  @apply flex flex-row justify-between;
+  @media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    flex-direction: column;
+  }
+}
+
+.card-img {
+  width: 100%;
+  height: 266px;
+  object-fit: scale-down;
+}
+
+.card-img-large {
+  width: 100%;
+  height: 362px;
+  object-fit: contain;
+  @media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    height: 266px;
+    object-fit: scale-down;
+  }
+}
+
+.card-title {
+  width: 100%;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 24px;
+  line-height: 1.2em;
+}
+
+.card-title-large {
+  font-size: 32px;
+  @media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    font-size: 24px;
+  }
+}
+
+.card-img-cover {
+  background: #D5D5D7;
+  width: 100%;
+}
+
+.card-img-cover-large {
+  background: #D5D5D7;
+  width: 470px;
+  @media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    width: 100%;
+  }
+}
+
+.card-text-wrapper {
+  background: rgba(248, 248, 248, 0.5);
+  flex: 1;
+  padding: 32px;
+  min-height: 174px;
+  @media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    padding: 24px;
+    min-height: 140px;
+  }
+}
+
+.card-text-wrapper-small {
+  padding: 24px;
+  min-height: 140px;
+}
+
+.card-text-wrapper-large {
+  width: 50%;
+  @media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    width: 100%;
+  }
+}

@@ -42,6 +42,7 @@ async function builder() {
     let article = articles.find(a => a.name === name);
     if (!article) {
       let newArticle = {name, createTime, updateTime};
+      newArticle.title = name.replace(".md", '')
       newArticle.id = articles.length > 0 ? articles[articles.length - 1].id + 1 : 0;
       newArticle.isTop = false;
       newArticle.tags = [];

@@ -14,7 +14,8 @@ const FluidWrapper: FC<FluidWrapperProps> = ({children, style, innerStyle, verti
       <div className={styles['fluid-wrapper-child']}
            style={innerStyle ? innerStyle : {
              flexDirection: vertical ? 'column' : 'row',
-             alignItems: vertical ? 'start' : 'center'
+             alignItems: vertical ? 'start' : 'center',
+             overflowX: 'hidden'
            }}>
         {children}
       </div>

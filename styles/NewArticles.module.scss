@@ -1,0 +1,17 @@
+.news-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  @media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.grid-row {
+  @apply grid w-full;
+  @media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
