@@ -13,6 +13,7 @@ const withMDX = require('@next/mdx')({
 /** @type {import('next').NextConfig} */
 const path = require('path')
 const nextConfig = {
+  swcMinify: true,
   // Configure pageExtensions to include md and mdx
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   reactStrictMode: false,
