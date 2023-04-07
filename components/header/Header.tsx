@@ -28,7 +28,7 @@ const Header: FC = () => {
   return (
     <HydrationProvider>
       <Server>
-        <PCHeader {...headerProps}></PCHeader>
+        <MobileHeader {...headerProps}></MobileHeader>
       </Server>
       <Client>
         <div style={{

@@ -1,5 +1,6 @@
 import 'reset-css';
 import '@/styles/globals.css'
+import 'instantsearch.css/themes/satellite-min.css';
 import {
   createDOMRenderer,
   FluentProvider,
