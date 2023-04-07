@@ -1,6 +1,7 @@
 const fs = require('node:fs/promises')
 const path = require('node:path')
 const indexesPath = path.resolve(__dirname, '../data')
+const publicPath = path.resolve(__dirname, '../public')
 
 async function traverse(dir, res, suffix = '.md') {
   let files = await fs.readdir(dir);
@@ -20,7 +21,7 @@ async function traverse(dir, res, suffix = '.md') {
 
 async function checkPoster(name) {
   name = name.replace(".md", '')
-  let files = await fs.readdir(path.join(indexesPath, '/posters'));
+  let files = await fs.readdir(path.join(publicPath, '/posters'));
   for (let file of files) {
     if (file === name + '.png' || file === name + '.jpg') {
       return 'local';
@@ -50,6 +51,7 @@ async function builder() {
       newArticle.poster = await checkPoster(name);
       articles = [...articles, newArticle];
     } else {
+      article.poster = await checkPoster(name);
       if (article.updateTime !== updateTime) {
         article.updateTime = updateTime;
       }
@@ -58,6 +60,9 @@ async function builder() {
   }
   articles = articles.filter(obj => Array.from(names).includes(obj.name))
   await fs.writeFile(path.join(indexesPath, 'articles.json'), JSON.stringify(articles, null, '  '))
+  console.log("**************************")
+  console.log("BUILD ARTICLE LIST SUCCESS")
+  console.log("**************************\n")
   return true;
 }
 

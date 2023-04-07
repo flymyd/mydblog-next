@@ -18,10 +18,7 @@ type EnhancedAppProps = AppProps & { renderer?: GriffelRenderer };
 function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    const start = () => {
-      console.log("loading")
-      setLoading(true)
-    }
+    const start = () => setLoading(true)
     const end = () => setLoading(false)
     Router.events.on('routeChangeStart', start)
     Router.events.on('routeChangeComplete', end)

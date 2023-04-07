@@ -2,17 +2,13 @@ import Head from 'next/head'
 
 import FluidWrapper from "@/components/layouts/FluidWrapper";
 import IndexLayout from "@/components/layouts/IndexLayout";
-import {useRouter} from "next/router";
-import useScroll from "@/hooks/useScroll";
-import {CSSProperties, FC, useEffect, useRef} from "react";
-import IndexCurtain from "@/components/index/IndexCurtain";
+import {Text} from "@fluentui/react-components";
+import {FC} from "react";
 import {GetStaticProps} from "next";
-import {dataPath, getArticlesList} from "@/utils/articlesHelper";
-import ArticleCard from "@/components/ArticleCard";
+import {getArticlesList} from "@/utils/articlesHelper";
 import NewArticles from "@/components/index/NewArticles";
 
 const Home: FC<any> = (props) => {
-  const router = useRouter()
   return (
     <>
       <Head>
@@ -24,6 +20,11 @@ const Home: FC<any> = (props) => {
             <NewArticles articles={props.articles}/>
           </FluidWrapper>
         </main>
+        <footer className="bg-black text-white flex flex-col">
+          <div className="flex flex-row justify-center my-1.5">
+            <Text>Copyleft © 2022 Flymyd. All rights not reserved.</Text>
+          </div>
+        </footer>
       </IndexLayout>
     </>
   )
@@ -32,10 +33,11 @@ const Home: FC<any> = (props) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   let articles: Array<any> = await getArticlesList()
   articles.sort((v1, v2) => new Date(v2.updateTime).getTime() - new Date(v1.updateTime).getTime())
+  articles.sort((v1, v2) => v2.isTop - v1.isTop)
   return {
     props: {
-      articles: articles.slice(0, 9)
-      // articles
+      // articles: articles.slice(0, 9)
+      articles
     },
   }
 }

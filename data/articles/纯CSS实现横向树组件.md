@@ -1,22 +1,4 @@
-# Vue3+TSX手撸横向树组件
-
-## Vite配置CSS Module
-
-```typescript
-//vite.config.ts
-css: {
-  modules: { // css模块化 文件以.module.[css|less|scss]结尾
-      generateScopedName: '[name]__[local]___[hash:base64:5]',
-      hashPrefix: 'prefix',
-    },
-    preprocessorOptions: {
-      scss: {
-        // 支持内联 JavaScript
-        javascriptEnabled: true,
-      },
-    }
-}
-```
+# 纯CSS实现横向树组件
 
 ## CSS
 
@@ -94,29 +76,27 @@ $child-padding-left: 10px;
 ## 模板
 
 ```tsx
-<template>
-  <div>
-    <div class="horizontal-tree">
-      <ul>
-        <li class="horizontal-tree-root">
-          父节点
-          <ul>
-            <li>
-              123
-            </li>
-            <li>456
-              <ul>
-                <li>
-                  114
-                </li>
-                <li>514</li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+<div>
+  <div class="horizontal-tree">
+    <ul>
+      <li class="horizontal-tree-root">
+        父节点
+        <ul>
+          <li>
+            123
+          </li>
+          <li>456
+            <ul>
+              <li>
+                114
+              </li>
+              <li>514</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
-</template>
+</div>
 ```
 
