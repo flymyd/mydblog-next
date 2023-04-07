@@ -36,8 +36,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   articles.sort((v1, v2) => v2.isTop - v1.isTop)
   return {
     props: {
-      // articles: articles.slice(0, 9)
-      articles
+      articles: articles.slice(0, 9)
+      // articles
     },
   }
 }

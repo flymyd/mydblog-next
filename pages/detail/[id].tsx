@@ -28,7 +28,7 @@ export const Detail: FC<any> = ({postData}) => {
         <div className="w-full mx-0 mt-6 myd-md">
           {headerRender()}
           <div
-            className="markdown-body"
+            className="markdown-body pb-10"
             dangerouslySetInnerHTML={{__html: postData.contentHtml}}
           />
         </div>
