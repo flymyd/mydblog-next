@@ -9,7 +9,7 @@ const withMDX = require('@next/mdx')({
 /** @type {import('next').NextConfig} */
 const path = require('path')
 const nextConfig = {
-  swcMinify: true,
+  // swcMinify: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   reactStrictMode: false,
   sassOptions: {
