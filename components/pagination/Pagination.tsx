@@ -20,7 +20,7 @@ const Pagination: FC<PaginationType> = ({totalPage, pageNum, style, onPageChange
     // setPageNum((state: number) => (state + 1))
   }
   return (
-    <div style={{margin: '60px 0', width: 250, ...style}}>
+    <div style={{width: 250, ...style}}>
       <div className="flex flex-row items-center content-center"
            style={{padding: '0 22px', maxWidth: '330px', margin: '0 auto'}}>
         <PaginationButton type="left" onClick={onPrevPage}/>

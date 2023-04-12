@@ -1,7 +1,6 @@
 import {createDOMRenderer, FluentProvider, renderToStyleElements, useThemeClassName} from '@fluentui/react-components';
 import Document, {Html, Head, Main, NextScript, DocumentContext} from 'next/document';
 import {ServerStyles, createStylesServer} from '@mantine/next';
-import {useEffect} from "react";
 
 const stylesServer = createStylesServer();
 

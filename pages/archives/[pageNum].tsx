@@ -17,13 +17,13 @@ export const Archives: FC<any> = ({listData, totalPage}) => {
   return <IndexLayout>
     <PageTitle title="归档，现以时间排序" subtitle="How time flies"/>
     <FluidWrapper innerStyle={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-      <div className="flex flex-col min-h-[80vh] w-full">
+      <div className="flex flex-col w-full" style={{minHeight: 'calc(100vh - 210px)'}}>
         {
           listData.map((obj: any) => <p className="my-5" onClick={() => navi.push('/detail/' + obj.id)}
                                         key={obj.id}>{obj.name}</p>)
         }
       </div>
-      <div className="flex flex-row items-center justify-center w-full">
+      <div className="flex flex-row items-center justify-center w-full my-3">
         <Pagination totalPage={totalPage} pageNum={pageNum}
                     onPageChange={(num: number) => navi.push('/archives/' + num)}></Pagination>
       </div>

@@ -26,7 +26,7 @@ const Escape: FC = () => {
                   <Card className="mt-3" shadow="sm" p="lg" radius="md" withBorder>
                     <Text size="sm">前端瓦尔基里 <Text style={{cursor: 'pointer'}} variant="link" component="span"
                                                        inherit>
-                      <a target="_blank" href={groupLink} rel="noreferrer">加入本群</a>
+                      <a target="_blank" href={groupLink} rel="noreferrer" style={{color: 'blue'}}>加入本群</a>
                     </Text></Text>
                     <Text size="xs" mt={4}>老鼠人 重建于 2022-10-17 晚</Text>
                   </Card>

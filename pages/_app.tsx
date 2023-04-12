@@ -34,8 +34,9 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
     <>
       <Head>
         <meta name="description" content="MYD's blog 下北沢研究院"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <meta name="baidu-site-verification" content="codeva-RZj7lmrfL9" />
+        {/*<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>*/}
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1, maximum-scale=1.0, user-scalable=0"/>
         <link rel="icon" href="/favicon.png"/>
       </Head>
       <RendererProvider renderer={renderer || createDOMRenderer()}>
