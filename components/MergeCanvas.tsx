@@ -43,10 +43,12 @@ const MergeCanvas: React.FC<Props> = ({avatarUrl, text}) => {
         avatar.src = avatarUrl + suffix;
         avatar.crossOrigin = 'anonymous'
         image.onload = () => {
+          const ratio = 0.7;
+          const fluidRatio = window.innerWidth < 768 ? 1 : 980 / window.innerWidth;
           const scale = Math.min(
-            (window.innerWidth * 0.8) / image.width,
-            (window.innerHeight * 0.8) / image.height
-          ); // 计算缩放比例，使得图片能够适应屏幕大小
+            (window.innerWidth * ratio * fluidRatio) / image.width,
+            (window.innerHeight * ratio * fluidRatio) / image.height
+          );
           canvas.width = image.width * scale; // 设置canvas的宽度为缩放后的图片宽度
           canvas.height = image.height * scale; // 设置canvas的高度为缩放后的图片高度
           ctx.drawImage(image, 0, 0, canvas.width, canvas.height); // 将图片绘制到画布上

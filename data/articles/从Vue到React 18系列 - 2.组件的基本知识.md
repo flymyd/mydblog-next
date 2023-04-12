@@ -182,7 +182,7 @@ class Test extends React.Component {
 
 ### 写法
 
-总的来说，Vue Compotision的写法很像React函数式组件。以<script setup>写法举例：
+总的来说，Vue Compotision的写法很像React函数式组件。以`<script setup>`写法举例：
 
 ```html
 <template>

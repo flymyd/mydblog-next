@@ -338,13 +338,13 @@ export const Header: FC = () => {
 
 ### CSS Modules
 
-优点：实现原理类似于<style scoped>，属于组件私有样式；
+优点：实现原理类似于`<style scoped>`，属于组件私有样式；
 
 缺点：
 
 * 引用的类名不能使用连接符(如 .header-title )，因为JS中不识别。尽管loader可以转换驼峰和连接符，但这将会出现如下情况：
 
-  ```tsx
+  ```jsx
   .header-title {
     color: #999;
   }
