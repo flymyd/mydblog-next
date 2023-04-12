@@ -1,5 +1,3 @@
-# 数据获取
-
 ## getServerSideProps（SSR使用）
 
 当你在一个Page中导出了`getServerSideProps`函数，那么Next将会在每次页面请求前使用`getServerSideProps`返回的数据进行预渲染。

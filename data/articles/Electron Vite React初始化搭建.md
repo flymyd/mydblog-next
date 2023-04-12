@@ -1,4 +1,3 @@
-# Electron Vite React初始化搭建
 ### 用Vite初始化工程
 ```powershell
 yarn create vite font-spider-shell --template react-ts

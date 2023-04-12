@@ -13,17 +13,17 @@ const articleWrapperStyle: CSSProperties = {
   userSelect: 'none',
   width: '100%',
 };
-const ArticleCard: FC<ArticleCardType> = (props: ArticleCardType, context) => {
+const ArticleCard: FC<ArticleCardType> = (props: ArticleCardType) => {
   const {type, title, updateTime, poster, tags, id} = props;
   const navi = useNavi();
-  const toDetail = (id: number) => {
+  const toDetail = () => {
     navi.push('/detail/' + id)
   }
   return (
     // 大号卡片使用左右布局，文字纵向两端对齐
     // 其它卡片使用上下布局
     <div className={type === 'large' ? styles['card-root'] : 'flex flex-col'} style={articleWrapperStyle}
-         onClick={() => toDetail(id)}>
+         onClick={() => toDetail()}>
       {
         poster ?
           <div className={styles[`card-img-cover${type === 'large' ? '-large' : ''}`]}>

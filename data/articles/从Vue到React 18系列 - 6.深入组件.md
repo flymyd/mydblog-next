@@ -1,5 +1,3 @@
-# 从Vue到React 18系列 - 6.深入组件
-
 以Vue2为主要参考对比，辅以部分Vue3概念，向React 18迁移的CookBook
 
 ## React Hook

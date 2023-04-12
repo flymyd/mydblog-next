@@ -1,0 +1,31 @@
+.grids {
+  //margin: 20px 0;
+  width: 100%;
+}
+
+.ulb {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 -12px;
+
+  div {
+    box-sizing: border-box;
+    width: 33.33%;
+    padding: 0 12px;
+    margin-bottom: 24px;
+    @media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+      width: 100%;
+    }
+  }
+
+  li {
+    min-height: 266px;
+    box-shadow: 0 0 10px rgb(31 55 153 / 10%);
+    list-style: none;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #EBEDF0;
+  }
+}

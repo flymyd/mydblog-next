@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Button, FluentProvider, Text, webDarkTheme} from "@fluentui/react-components";
+import {Button, Text} from "@fluentui/react-components";
 import {HeaderProps} from "@/components/header/HeaderProps";
 import FluidWrapper from "@/components/layouts/FluidWrapper";
 

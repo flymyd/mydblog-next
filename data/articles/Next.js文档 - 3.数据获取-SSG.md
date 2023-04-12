@@ -1,5 +1,3 @@
-# 数据获取
-
 ## getStaticProps（SSG使用）
 
 当你在一个Page中导出了`getStaticProps `函数，那么Next将会在构建时使用`getStaticProps`返回的数据预生成这个页面。

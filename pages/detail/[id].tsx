@@ -23,7 +23,7 @@ export const Detail: FC<any> = ({postData}) => {
     </div>
   }
   return (
-    <IndexLayout>
+    <IndexLayout title={postData.title}>
       <FluidWrapper>
         <div className="w-full mx-0 mt-6 myd-md">
           {headerRender()}
@@ -48,8 +48,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const {params} = context;
   const id = params!.id;
   let articles: Array<any> = await getArticlesList()
-  const fileName = articles.filter(o => o.id == id)[0].name;
-  const markdownFile = await fs.readFile(path.join(dataPath, '/articles', fileName), 'utf-8')
+  const articleInfo = articles.filter(o => o.id == id)[0]
+  const {name, updateTime, title} = articleInfo;
+  const markdownFile = await fs.readFile(path.join(dataPath, '/articles', name), 'utf-8')
   const matterResult = matter(markdownFile);
   const processedContent = await remark()
     .use(html, {sanitize: false})
@@ -61,8 +62,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       postData: {
         id,
         contentHtml,
-        title: matterResult.data?.title ?? '',
-        date: matterResult.data?.date?.toString() ?? '',
+        title: matterResult.data?.title ?? (title || ''),
+        date: matterResult.data?.date?.toString() ?? (updateTime || ''),
       }
     },
   }

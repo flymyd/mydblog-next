@@ -1,4 +1,4 @@
-import {CSSProperties, FC} from "react";
+import {FC} from "react";
 import {useMediaQuery} from "@material-ui/core";
 import {Client, HydrationProvider, Server} from "react-hydration-provider";
 import PCHeader from "@/components/header/PCHeader";

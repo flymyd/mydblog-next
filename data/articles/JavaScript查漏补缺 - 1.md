@@ -1,5 +1,3 @@
-# JavaScript查漏补缺 - 1
-
 ## 安全地将字符串转换为数组
 
 ```javascript

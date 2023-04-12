@@ -1,0 +1,27 @@
+.page-title {
+  @apply flex flex-row items-end my-5;
+  @media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    @apply flex flex-col items-start;
+  }
+}
+
+.page-title__title {
+  font-size: 32px;
+  line-height: 1.125;
+  font-weight: 700;
+  letter-spacing: .004em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.page-title__subtitle {
+  font-style: italic;
+  letter-spacing: .004em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #999;
+  margin-left: 1em;
+  margin-top: 0;
+  @media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    margin-left: 0;
+    margin-top: .5em;
+  }
+}

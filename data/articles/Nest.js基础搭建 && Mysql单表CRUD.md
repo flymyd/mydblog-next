@@ -1,5 +1,3 @@
-# Nest.js基础搭建 && Mysql单表CRUD
-
 ## 安装相关依赖
 
 ```shell

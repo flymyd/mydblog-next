@@ -52,7 +52,7 @@ const NewArticles: FC<{ articles: Array<any> }> = ({articles}) => {
     }
   }
   return (
-    <div className={[styles['news-row'], 'mt-5'].join(" ")} style={{width: '100%'}}>
+    <div className={styles['news-row']} style={{width: '100%'}}>
       {articleListRender()}
     </div>
   )

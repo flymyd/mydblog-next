@@ -7,6 +7,7 @@ import {FC} from "react";
 import {GetStaticProps} from "next";
 import {getArticlesList} from "@/utils/articlesHelper";
 import NewArticles from "@/components/index/NewArticles";
+import PageTitle from "@/components/PageTitle";
 
 const Home: FC<any> = (props) => {
   return (
@@ -16,6 +17,7 @@ const Home: FC<any> = (props) => {
       </Head>
       <IndexLayout>
         <main className="w-screen">
+          <PageTitle title="最新文章"/>
           <FluidWrapper>
             <NewArticles articles={props.articles}/>
           </FluidWrapper>

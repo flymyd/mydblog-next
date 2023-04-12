@@ -1,5 +1,3 @@
-# 从Vue到React 18系列 - 2.组件的基本知识
-
 以Vue2为主要参考对比，辅以部分Vue3概念，向React 18迁移的CookBook
 
 ## React类组件/Vue Options组件
