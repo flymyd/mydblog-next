@@ -40,7 +40,7 @@ const amenDict = [
 ]
 const logoSource = "https://jx3.xoyo.com/zt/2014/11/21/zt/menpai/assets/images/mp-cy/skill-1.png";
 const CatGenerate: FC = () => {
-  const [amen, setAmen] = useState('')
+  const [amen, setAmen] = useState('wh-2')
   const [text, setText] = useState('')
   const [textDep, setTextDep] = useState('')
   const [cancel] = useDebounce(() => {
@@ -54,7 +54,7 @@ const CatGenerate: FC = () => {
   }
   const getAmenLogo = (amenType: string) => {
     if (amenType) {
-      return 'https://blog.van.ac.cn/jx3/' + amenType + '.png'
+      return 'https://blog.van.ac.cn/img/jx3/' + amenType + '.png'
       // return 'https://mydblog.obs.cn-east-3.myhuaweicloud.com/jx3/' + amenType + '.png'
       // const letterMatch = amenType.match(/[a-z]+/i); // 匹配任意个大小写字母
       // const numberMatch = amenType.match(/\d+/); // 匹配任意个数字
