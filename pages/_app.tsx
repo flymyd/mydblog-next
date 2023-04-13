@@ -38,6 +38,7 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1, maximum-scale=1.0, user-scalable=0"/>
         <link rel="icon" href="/favicon.png"/>
+        <link rel="preload" href="/fonts/home-xing-tc.ttf" as="font" type="font/truetype"/>
       </Head>
       <RendererProvider renderer={renderer || createDOMRenderer()}>
         <SSRProvider>

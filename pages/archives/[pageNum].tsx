@@ -7,7 +7,7 @@ import FluidWrapper from "@/components/layouts/FluidWrapper";
 import {useRouter as useNavi} from "next/dist/client/components/navigation";
 import Pagination from "@/components/pagination/Pagination";
 import PageTitle from "@/components/PageTitle";
-import {Label, Select, SelectOnChangeData, useId} from "@fluentui/react-components";
+import {Button, Label, Select, SelectOnChangeData, useId} from "@fluentui/react-components";
 
 
 const pageSize = 10;

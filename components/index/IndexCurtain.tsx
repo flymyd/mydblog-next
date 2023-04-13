@@ -1,7 +1,12 @@
 import {CSSProperties, FC} from "react";
 import FluidWrapper from "@/components/layouts/FluidWrapper";
 
-const homeTextStyle: CSSProperties = {fontSize: 60, lineHeight: '1em', width: '1em', fontFamily: 'HomeXingSC'}
+const homeTextStyle: CSSProperties = {
+  fontSize: 60,
+  lineHeight: '1em',
+  width: '1em',
+  fontFamily: "'HC-2021', HomeXingSC"
+}
 const IndexCurtain: FC = () => {
   return (
     <section className="snap-center h-layout w-screen relative">
