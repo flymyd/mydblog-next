@@ -1,7 +1,6 @@
 import 'github-markdown-css/github-markdown-light.css'
-import React, {FC, useEffect} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {GetStaticPaths, GetStaticProps} from "next";
-import {Text} from "@fluentui/react-components";
 import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
@@ -14,22 +13,28 @@ import IndexLayout from "@/components/layouts/IndexLayout";
 import FluidWrapper from "@/components/layouts/FluidWrapper";
 
 export const Detail: FC<any> = ({postData}) => {
+  const {date, title, contentHtml} = postData;
+  const [updateTime, setUpdateTime] = useState(date || '')
+  useEffect(() => {
+    if (date) {
+      setUpdateTime(new Date(date).toLocaleString('zh-Hans-CN'))
+    }
+  }, [])
   const headerRender = () => {
-    const {title, date} = postData;
     return <div className="markdown-body">
       {title ? <h1 style={{border: 'none', padding: 0}}>{title}</h1> : <></>}
       {date ? <h5 className="pb-3"
-                  style={{border: 'none', margin: 0}}>{new Date(date).toLocaleString('zh-Hans-CN')}</h5> : <></>}
+                  style={{border: 'none', margin: 0}}>{updateTime}</h5> : <></>}
     </div>
   }
   return (
-    <IndexLayout title={postData.title}>
+    <IndexLayout title={title}>
       <FluidWrapper>
         <div className="w-full mx-0 mt-6 myd-md">
           {headerRender()}
           <div
             className="markdown-body pb-10"
-            dangerouslySetInnerHTML={{__html: postData.contentHtml}}
+            dangerouslySetInnerHTML={{__html: contentHtml}}
           />
         </div>
       </FluidWrapper>

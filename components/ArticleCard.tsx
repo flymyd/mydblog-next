@@ -1,4 +1,4 @@
-import {CSSProperties, FC} from "react";
+import {CSSProperties, FC, useEffect, useState} from "react";
 import {ArticleCardType} from "@/types/ArticleCardType";
 import styles from "@/styles/ArticleCard.module.scss";
 import {useRouter as useNavi} from "next/dist/client/components/navigation";
@@ -14,8 +14,10 @@ const articleWrapperStyle: CSSProperties = {
   width: '100%',
 };
 const ArticleCard: FC<ArticleCardType> = (props: ArticleCardType) => {
-  const {type, title, updateTime, poster, tags, id} = props;
+  const {type, title, poster, tags, id} = props;
   const navi = useNavi();
+  const [updateTime, setUpdateTime] = useState(props.updateTime)
+  useEffect(() => setUpdateTime(new Date(props.updateTime).toLocaleString('zh-Hans-CN')), [])
   const toDetail = () => {
     navi.push('/detail/' + id)
   }
@@ -51,7 +53,7 @@ const ArticleCard: FC<ArticleCardType> = (props: ArticleCardType) => {
             }}>{tags.join(", ")}</span> : <></>
           }
         </div>
-        <span style={dateStyle}>{new Date(updateTime).toLocaleString('zh-Hans-CN')}</span>
+        <span style={dateStyle}>{updateTime}</span>
       </div>
     </div>
   )

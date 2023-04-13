@@ -5505,10 +5505,10 @@ react-transition-group@^4.4.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^18.3.0-next-85bb7b685-20230406:
-  version "18.3.0-next-85bb7b685-20230406"
-  resolved "https://registry.npmmirror.com/react/-/react-18.3.0-next-85bb7b685-20230406.tgz#d68ae96de7fde5743206836d891d8f7e0a2f3e76"
-  integrity sha512-w3SYZNSfWyAwWx12dyd2j6ymCCQGdgxWrfiUoc2qRUMsZLOFJHRzca2y1CCgfK72YHAIpmHZ4EkyryWnTSvwqA==
+react@^18.2.0:
+  version "18.2.0"
+  resolved "https://registry.npmmirror.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
+  integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
 

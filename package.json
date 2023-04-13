@@ -35,7 +35,7 @@
     "next-sitemap": "^4.0.6",
     "next-themes": "^0.2.1",
     "prism-themes": "^1.9.0",
-    "react": "^18.3.0-next-85bb7b685-20230406",
+    "react": "^18.2.0",
     "react-dom": "18.2.0",
     "react-hydration-provider": "^1.0.2",
     "react-instantsearch-hooks-router-nextjs": "^6.42.1",
