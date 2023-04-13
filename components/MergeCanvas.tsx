@@ -1,12 +1,12 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, {useRef, useEffect} from "react";
+import {Button} from "@fluentui/react-components";
 
 interface Props {
-  avatarUrl: string; // 用户选择的头像url
-  text: string; // 用户输入的文字
+  avatarUrl: string;
+  text: string;
 }
 
-const imageUrl = "/cat-bg.png"; // 固定的图片url
-
+const imageUrl = "/cat-bg.png";
 const MergeCanvas: React.FC<Props> = ({avatarUrl, text}) => {
   // const suffix = '?v=' + new Date().getTime();
   const suffix = '';
@@ -14,29 +14,21 @@ const MergeCanvas: React.FC<Props> = ({avatarUrl, text}) => {
   const saveImg = () => {
     const canvas: any = canvasRef.current;
     if (canvas) {
-      // let image = new Image();
-      // image.src = canvas.toDataURL({format: 'image/png', quality: 1, width: canvas.width, height: canvas.height});
-      // let url = image.src.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-      // window.open(url);
-      // 创建一个 a 标签，并设置 href 和 download 属性
       const el = document.createElement('a');
-      // 设置 href 为图片经过 base64 编码后的字符串，默认为 png 格式
       el.href = canvas.toDataURL();
       el.download = 'cat.png';
-
-      // 创建一个点击事件并对 a 标签进行触发
       const event = new MouseEvent('click');
       el.dispatchEvent(event);
 
     }
   }
   useEffect(() => {
-    const canvas = canvasRef.current; // 获取canvas元素
+    const canvas = canvasRef.current;
     if (canvas) {
-      const ctx = canvas.getContext("2d"); // 获取canvas绘图上下文
+      const ctx = canvas.getContext("2d");
       if (ctx) {
         ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
-        const image = new Image(); // 创建一个图片对象
+        const image = new Image();
         image.src = imageUrl;
         image.crossOrigin = 'anonymous'
         const avatar = new Image();
@@ -59,7 +51,7 @@ const MergeCanvas: React.FC<Props> = ({avatarUrl, text}) => {
         };
       }
     }
-  }, [avatarUrl, text]); // 只在组件挂载时执行一次这个副作用函数
+  }, [avatarUrl, text]);
 
   // 定义一个函数，用于绘制头像
   const drawAvatar = (ctx: CanvasRenderingContext2D, canvas: any, avatar: HTMLImageElement) => {
@@ -80,13 +72,12 @@ const MergeCanvas: React.FC<Props> = ({avatarUrl, text}) => {
     ctx.restore(); // 恢复之前保存的绘图状态
   };
 
-  // 定义一个函数，用于绘制文字
   const drawText = (ctx: CanvasRenderingContext2D, canvas: any) => {
-    const fontSize = Math.min(canvas.width, canvas.height) / 8; // 设置字体大小为画布宽高的最小值的二十分之一
-    ctx.font = `${fontSize}px Arial`; // 设置字体样式
-    ctx.fillStyle = "black"; // 设置字体颜色为白色
-    ctx.textAlign = "center"; // 设置字体水平对齐方式为居中
-    ctx.textBaseline = "bottom"; // 设置字体垂直对齐方式为底部对齐
+    const fontSize = Math.min(canvas.width, canvas.height) / 8;
+    ctx.font = `${fontSize}px Arial`; // 字体样式
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center"; // 字体水平对齐方式
+    ctx.textBaseline = "bottom"; // 字体垂直对齐方式
     const textWidth = ctx.measureText(text).width; // 获取文字的宽度
     if (textWidth > canvas.width * 0.8) {
       text = text.slice(0, -3) + "..."; // 如果文字宽度超过画布宽度的80%，就截取前面部分，并加上省略号
@@ -96,8 +87,11 @@ const MergeCanvas: React.FC<Props> = ({avatarUrl, text}) => {
 
   return <div className="mb-10">
     <canvas ref={canvasRef}/>
-    {(imageUrl || text) ? <button className="mt-5" onClick={() => saveImg()}>点击下载</button> : <></>}
-  </div>; // 返回一个canvas元素，并将引用传递给它
+    {(imageUrl || text) ?
+      <div className="mt-5">
+        <Button appearance="primary" onClick={() => saveImg()}>点击下载</Button>
+      </div> : <></>}
+  </div>;
 };
 
 export default MergeCanvas;
