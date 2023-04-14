@@ -11,15 +11,11 @@ import {dataPath, getArticlesList} from "@/utils/articlesHelper";
 import 'prismjs/themes/prism-tomorrow.min.css';
 import IndexLayout from "@/components/layouts/IndexLayout";
 import FluidWrapper from "@/components/layouts/FluidWrapper";
+import useUpdateTime from "@/hooks/useUpdateTime";
 
 export const Detail: FC<any> = ({postData}) => {
   const {date, title, contentHtml} = postData;
-  const [updateTime, setUpdateTime] = useState(date || '')
-  useEffect(() => {
-    if (date) {
-      setUpdateTime(new Date(date).toLocaleString('zh-Hans-CN'))
-    }
-  }, [])
+  const updateTime = useUpdateTime(date || '')
   const headerRender = () => {
     return <div className="markdown-body">
       {title ? <h1 style={{border: 'none', padding: 0}}>{title}</h1> : <></>}

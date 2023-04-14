@@ -3,6 +3,7 @@ import {ArticleCardType} from "@/types/ArticleCardType";
 import styles from "@/styles/ArticleCard.module.scss";
 import {useRouter as useNavi} from "next/dist/client/components/navigation";
 import {getArticlePoster} from "@/utils/cardHelper";
+import useUpdateTime from "@/hooks/useUpdateTime";
 
 const dateStyle = {fontSize: "14px", fontWeight: 600, color: "#6e6e73", lineHeight: '2em'}
 const articleWrapperStyle: CSSProperties = {
@@ -16,8 +17,7 @@ const articleWrapperStyle: CSSProperties = {
 const ArticleCard: FC<ArticleCardType> = (props: ArticleCardType) => {
   const {type, title, poster, tags, id} = props;
   const navi = useNavi();
-  const [updateTime, setUpdateTime] = useState(props.updateTime)
-  useEffect(() => setUpdateTime(new Date(props.updateTime).toLocaleString('zh-Hans-CN')), [])
+  const updateTime = useUpdateTime(props.updateTime)
   const toDetail = () => {
     navi.push('/detail/' + id)
   }

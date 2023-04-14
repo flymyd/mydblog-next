@@ -5,7 +5,7 @@
     "title": "Electron Vite React初始化搭建",
     "id": 0,
     "isTop": false,
-    "tags": [],
+    "tags": ["test1", "测试2"],
     "categories": [],
     "poster": ""
   },
@@ -25,7 +25,7 @@
     "title": "JavaScript查漏补缺 - 1",
     "id": 2,
     "isTop": false,
-    "tags": [],
+    "tags": ["test1", "测试2"],
     "categories": [],
     "poster": ""
   },
@@ -35,7 +35,7 @@
     "title": "Next.js文档 - 1.页面",
     "id": 4,
     "isTop": true,
-    "tags": [],
+    "tags": ["test1", "测试2"],
     "categories": [],
     "poster": "local"
   },

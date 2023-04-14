@@ -8,7 +8,9 @@ export async function getArticlesList() {
   const articlesJSON = await fs.readFile(path.join(dataPath, 'articles.json'), 'utf-8')
   try {
     const json = JSON.parse(articlesJSON);
-    return Array.isArray(json) ? json : []
+    let result = Array.isArray(json) ? json : []
+    result.sort((v1, v2) => new Date(v2.updateTime).getTime() - new Date(v1.updateTime).getTime())
+    return result;
   } catch (e) {
     return []
   }

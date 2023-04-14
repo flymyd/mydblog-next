@@ -34,7 +34,6 @@ const Home: FC<any> = (props) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   let articles: Array<any> = await getArticlesList()
-  articles.sort((v1, v2) => new Date(v2.updateTime).getTime() - new Date(v1.updateTime).getTime())
   articles.sort((v1, v2) => v2.isTop - v1.isTop)
   return {
     props: {
