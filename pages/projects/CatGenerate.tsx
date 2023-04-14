@@ -14,6 +14,7 @@ import {
   useId
 } from "@fluentui/react-components";
 import {amenDict} from "@/utils/AmenDict";
+import ProjectLayout from "@/components/layouts/ProjectLayout";
 
 const CatGenerate: FC = () => {
   const inputId = useId("input");
@@ -43,11 +44,7 @@ const CatGenerate: FC = () => {
   }
   return (
     <>
-      <Head>
-        <title>拿捏猫猫生成器</title>
-      </Head>
-      <div style={{minHeight: '100vh'}}>
-        <ToHomeRow/>
+      <ProjectLayout title="拿捏猫猫生成器">
         <FluidWrapper>
           <div className="flex flex-col">
             <h1 className="mb-5">谁不想拿捏猫猫呢</h1>
@@ -67,7 +64,7 @@ const CatGenerate: FC = () => {
             <MergeCanvas avatarUrl={getAmenLogo(amen)} text={text}/>
           </div>
         </FluidWrapper>
-      </div>
+      </ProjectLayout>
     </>
   )
 }

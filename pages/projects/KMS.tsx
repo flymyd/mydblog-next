@@ -1,10 +1,9 @@
 import {FC, useEffect} from "react";
-import ToHomeRow from "@/components/ToHomeRow";
 import {Code, Title, Text, List} from "@mantine/core";
 import Clipboard from 'clipboard';
 import FluidWrapper from "@/components/layouts/FluidWrapper";
 import {CONST} from "@/utils/CONST";
-import Head from "next/head";
+import ProjectLayout from "@/components/layouts/ProjectLayout";
 
 const toolsUrl = 'https://mydblog.obs.cn-east-3.myhuaweicloud.com/kms-activate.zip'
 const gitUrl = 'https://github.com/jm33-m0/kms-activate';
@@ -15,11 +14,7 @@ const KMS: FC = () => {
   const kmsCmd = `slmgr -skms van.ac.cn\nslmgr -ato`
   return (
     <>
-      <Head>
-        <title>KMS在线激活服务器</title>
-      </Head>
-      <div style={{minHeight: '100vh'}}>
-        <ToHomeRow/>
+      <ProjectLayout title="KMS在线激活服务器">
         <FluidWrapper>
           <div className="flex flex-col">
             <Title order={1} className="mb-3 mt-3">KMS在线激活服务器</Title>
@@ -57,7 +52,7 @@ const KMS: FC = () => {
             </div>
           </div>
         </FluidWrapper>
-      </div>
+      </ProjectLayout>
     </>
   )
 };

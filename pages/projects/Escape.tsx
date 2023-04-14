@@ -1,19 +1,14 @@
 import {FC} from "react";
 
 import {Timeline, Text, Card} from '@mantine/core';
-import ToHomeRow from "@/components/ToHomeRow";
 import FluidWrapper from "@/components/layouts/FluidWrapper";
-import Head from "next/head";
+import ProjectLayout from "@/components/layouts/ProjectLayout";
 
 const groupLink = "https://qm.qq.com/cgi-bin/qm/qr?k=sxKA1x7YQcTJNHf5l_WZbIOj6yi1Oup-&jump_from=webapi&authKey=pVr4D1fW5Xg3Ui1cMCZtTaCOcdq/+5ZlBQwtbk9gm547a3Gl63Qf6hfBY6QiEPEa"
 const Escape: FC = () => {
   return (
     <>
-      <Head>
-        <title>前端逃生舱</title>
-      </Head>
-      <div style={{minHeight: '100vh'}}>
-        <ToHomeRow/>
+      <ProjectLayout title="前端逃生舱">
         <FluidWrapper>
           <div className="w-full">
             <div style={{padding: 20}}>
@@ -47,7 +42,7 @@ const Escape: FC = () => {
             </div>
           </div>
         </FluidWrapper>
-      </div>
+      </ProjectLayout>
     </>
   )
 }
