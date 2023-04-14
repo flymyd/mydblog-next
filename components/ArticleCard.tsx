@@ -4,6 +4,7 @@ import styles from "@/styles/ArticleCard.module.scss";
 import {useRouter as useNavi} from "next/dist/client/components/navigation";
 import {getArticlePoster} from "@/utils/cardHelper";
 import useUpdateTime from "@/hooks/useUpdateTime";
+import {Text} from "@fluentui/react-components";
 
 const dateStyle = {fontSize: "14px", fontWeight: 600, color: "#6e6e73", lineHeight: '2em'}
 const articleWrapperStyle: CSSProperties = {
@@ -15,7 +16,7 @@ const articleWrapperStyle: CSSProperties = {
   width: '100%',
 };
 const ArticleCard: FC<ArticleCardType> = (props: ArticleCardType) => {
-  const {type, title, poster, tags, id} = props;
+  const {type, title, poster, tags, id, abstract} = props;
   const navi = useNavi();
   const updateTime = useUpdateTime(props.updateTime)
   const toDetail = () => {
@@ -52,6 +53,7 @@ const ArticleCard: FC<ArticleCardType> = (props: ArticleCardType) => {
               marginTop: 8
             }}>{tags.join(", ")}</span> : <></>
           }
+          <Text italic className="text-[#6E6E73] my-5">{abstract}</Text>
         </div>
         <span style={dateStyle}>{updateTime}</span>
       </div>

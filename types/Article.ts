@@ -6,5 +6,7 @@ export interface Article extends BaseType {
   poster: string,  //标题图
   isTop: boolean,  //是否置顶
   tags: Array<string>,
-  categories: Array<string>
+  categories: Array<string>,  //分类
+  abstract: string,  //摘要
+  heads: string[],  //文章各级标题
 }

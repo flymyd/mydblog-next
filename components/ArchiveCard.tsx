@@ -27,8 +27,12 @@ const ArchiveCard: FC<{ article: Article }> = ({article}) => {
       <div className="cursor-pointer flex flex-col mx-[16px] mt-[16px] md:ml-[32px] md:mr-0 md:mt-0 md:flex-1"
            onClick={toDetail}>
         <Text weight="bold" size={600}>{article.title}</Text>
-        <Text weight="bold" size={200} className="text-[#6E6E73] my-5">{article.tags.join(', ')}</Text>
-        <Text weight="medium" size={300} className="text-[#6E6E73]">{updateTime}</Text>
+        {
+          article.tags.length > 0 ?
+            <Text weight="bold" size={200} className="text-[#6E6E73] mt-5">{article.tags.join(', ')}</Text> : <></>
+        }
+        <Text italic className="text-[#6E6E73] mt-5">{article.abstract}</Text>
+        <Text weight="medium" size={300} className="text-[#6E6E73] mt-5">{updateTime}</Text>
       </div>
     </div>
   </>

@@ -1,7 +1,24 @@
 const fs = require('node:fs/promises')
 const path = require('node:path')
+const {MeiliSearch} = require('meilisearch')
 const indexesPath = path.resolve(__dirname, '../data')
 const publicPath = path.resolve(__dirname, '../public')
+
+const MEILI_SEARCH_HOST = 'http://123.60.147.94:7700';
+
+function printLog(text, isEnd) {
+  console.log("**********************************")
+  console.log(text)
+  if (isEnd) {
+    console.log("**********************************\n")
+  }
+}
+
+//判断结尾是否为标点符号
+function isPunctuationEnd(str) {
+  const reg = /[，。！？；：、,.?!;:]$/;
+  return reg.test(str);
+}
 
 async function traverse(dir, res, suffix = '.md') {
   let files = await fs.readdir(dir);
@@ -19,6 +36,7 @@ async function traverse(dir, res, suffix = '.md') {
   }
 }
 
+//海报链接构建
 async function checkPoster(name) {
   name = name.replace(".md", '')
   let files = await fs.readdir(path.join(publicPath, '/posters'));
@@ -30,7 +48,27 @@ async function checkPoster(name) {
   return '';
 }
 
+//提取摘要及各级标题
+async function getAbstract(markdownText) {
+  const markdownIt = require('markdown-it');
+  const cheerio = require('cheerio');
+  const md = new markdownIt();
+  const html = md.render(markdownText);
+  const $ = cheerio.load(html);
+  const firstElement = $('p').first();
+  let summary = firstElement.text().slice(0, 100);
+  const heads = []
+  $('h1, h2, h3, h4, h5, h6, p').each(function () {
+    heads.push($(this).text())
+  })
+  return {
+    abstract: isPunctuationEnd(summary) ? summary : summary + '...',
+    heads
+  };
+}
+
 async function builder() {
+  printLog("BUILDING INDEXES...")
   const articlesJSON = await fs.readFile(path.join(indexesPath, 'articles.json'), 'utf-8')
   let articles = JSON.parse(articlesJSON)
   // 处理articles文件夹
@@ -41,6 +79,8 @@ async function builder() {
     let {name, createTime, updateTime} = folder;
     names.add(name);
     let article = articles.find(a => a.name === name);
+    const markdownText = await fs.readFile(path.join(indexesPath, '/articles', name), 'utf-8');
+    const articleAbstract = await getAbstract(markdownText);
     if (!article) {
       let newArticle = {name, createTime, updateTime};
       newArticle.title = name.replace(".md", '')
@@ -49,6 +89,8 @@ async function builder() {
       newArticle.tags = [];
       newArticle.categories = [];
       newArticle.poster = await checkPoster(name);
+      newArticle.abstract = articleAbstract.abstract;
+      newArticle.heads = articleAbstract.heads;
       articles = [...articles, newArticle];
     } else {
       article.poster = await checkPoster(name);
@@ -56,13 +98,18 @@ async function builder() {
         article.updateTime = updateTime;
       }
       article.poster = await checkPoster(name);
+      article.abstract = articleAbstract.abstract;
+      article.heads = articleAbstract.heads;
     }
   }
   articles = articles.filter(obj => Array.from(names).includes(obj.name))
-  await fs.writeFile(path.join(indexesPath, 'articles.json'), JSON.stringify(articles, null, '  '))
-  console.log("**************************")
-  console.log("BUILD ARTICLE LIST SUCCESS")
-  console.log("**************************\n")
+  const resultJSON = JSON.stringify(articles, null, '  ');
+  await fs.writeFile(path.join(indexesPath, 'articles.json'), resultJSON)
+  printLog("BUILD INDEXES SUCCESS")
+  printLog("SENDING INDEXES TO MEILISEARCH...")
+  const client = new MeiliSearch({host: MEILI_SEARCH_HOST})
+  await client.index('articles').addDocuments(articles)
+    .then((res) => printLog("SEARCH INDEXES BUILD SUCCESS", true))
   return true;
 }
 
