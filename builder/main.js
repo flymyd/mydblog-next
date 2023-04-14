@@ -71,6 +71,7 @@ async function builder() {
   printLog("BUILDING INDEXES...")
   const articlesJSON = await fs.readFile(path.join(indexesPath, 'articles.json'), 'utf-8')
   let articles = JSON.parse(articlesJSON)
+  let indexes = JSON.parse(articlesJSON)
   // 处理articles文件夹
   let articlesFolderInfo = []
   await traverse(path.join(indexesPath, '/articles'), articlesFolderInfo)
@@ -79,6 +80,7 @@ async function builder() {
     let {name, createTime, updateTime} = folder;
     names.add(name);
     let article = articles.find(a => a.name === name);
+    let indexObj = indexes.find(a => a.name === name);
     const markdownText = await fs.readFile(path.join(indexesPath, '/articles', name), 'utf-8');
     const articleAbstract = await getAbstract(markdownText);
     if (!article) {
@@ -90,25 +92,31 @@ async function builder() {
       newArticle.categories = [];
       newArticle.poster = await checkPoster(name);
       newArticle.abstract = articleAbstract.abstract;
-      newArticle.heads = articleAbstract.heads;
       articles = [...articles, newArticle];
+      const indexObj = {}
+      Object.assign(indexObj, {...article})
+      indexObj.heads = articleAbstract.heads;
+      indexes = [...articles, indexObj];
     } else {
-      article.poster = await checkPoster(name);
       if (article.updateTime !== updateTime) {
         article.updateTime = updateTime;
       }
       article.poster = await checkPoster(name);
       article.abstract = articleAbstract.abstract;
-      article.heads = articleAbstract.heads;
+      Object.assign(indexObj, {...article})
+      indexObj.heads = articleAbstract.heads;
     }
   }
   articles = articles.filter(obj => Array.from(names).includes(obj.name))
+  indexes = indexes.filter(obj => Array.from(names).includes(obj.name))
   const resultJSON = JSON.stringify(articles, null, '  ');
   await fs.writeFile(path.join(indexesPath, 'articles.json'), resultJSON)
+  const indexesJSON = JSON.stringify(indexes, null, '  ');
+  await fs.writeFile(path.join(indexesPath, 'indexes.json'), indexesJSON)
   printLog("BUILD INDEXES SUCCESS")
   printLog("SENDING INDEXES TO MEILISEARCH...")
   const client = new MeiliSearch({host: MEILI_SEARCH_HOST})
-  await client.index('articles').addDocuments(articles)
+  await client.index('articles').addDocuments(indexes)
     .then((res) => printLog("SEARCH INDEXES BUILD SUCCESS", true))
   return true;
 }
