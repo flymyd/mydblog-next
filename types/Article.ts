@@ -8,5 +8,4 @@ export interface Article extends BaseType {
   tags: Array<string>,
   categories: Array<string>,  //分类
   abstract: string,  //摘要
-  heads: string[],  //文章各级标题
 }

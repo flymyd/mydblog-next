@@ -1,5 +1,6 @@
 interface AnyInterface {
   [props: string]: any;
+  [props: any]: any;
 }
 
 declare module "react-typewriter-effect" {
@@ -21,6 +22,7 @@ declare module "react-typewriter-effect" {
 }
 declare module "node-pop3" {
   export default class Pop3Command implements AnyInterface {
-    constructor(any){}
+    constructor(any) {
+    }
   }
 }
