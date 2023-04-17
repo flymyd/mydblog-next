@@ -18,7 +18,7 @@ type EnhancedAppProps = AppProps & { renderer?: GriffelRenderer };
 function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
   const [loading, setLoading] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
-
+  const [scrollPosition, setScrollPosition] = useState(0)
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
   useEffect(() => {
     const start = () => setLoading(true)
@@ -36,7 +36,12 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
     function handleKeyPress(event: KeyboardEvent) {
       if ((event.ctrlKey || event.metaKey) && event.key === "k") {
         event.preventDefault();
-        setShowSearch((prevState) => !prevState)
+        setShowSearch((prevState) => {
+          if (!prevState) {
+            setScrollPosition(window.scrollY)
+          }
+          return !prevState;
+        })
       } else if (event.key === "Escape") {
         event.preventDefault();
         setShowSearch(false);
@@ -48,6 +53,19 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
       window.removeEventListener("keydown", handleKeyPress);
     };
   }, []);
+  useEffect(() => {
+    if (!showSearch) {
+      const scrollOpts: any = {
+        top: scrollPosition,
+        left: 0,
+        behavior: 'instant'
+      }
+      window.scrollTo(scrollOpts)
+      setTimeout(() => {
+        setScrollPosition(0)
+      }, 100)
+    }
+  }, [showSearch])
   return (
     <>
       <Head>
@@ -62,26 +80,33 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
             <div style={{position: 'fixed', width: '100%', zIndex: 10000}}>
               {loading && <ProgressBar thickness="large"></ProgressBar>}
             </div>
-            {
-              showSearch ? <div style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100vh',
-                zIndex: 10001,
-                overflowY: 'scroll'
-              }}>
-                <div style={{height: '100vh', background: 'red', opacity: 0.5}} onWheel={event => {
-                  event.stopPropagation();
-                }}>
-                  {
-                    new Array(10).fill(114).map((v, i) => (<p key={i}>测试遮罩测试遮罩测试遮罩</p>))
-                  }
+            {showSearch ? (
+              <div
+                style={{
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  zIndex: 10001,
+                  height: '100vh',
+                  overflowY: 'scroll'
+                }}
+              >
+                <div
+                  style={{
+                    height: 'auto',
+                    minHeight: '100vh',
+                    background: '#000',
+                    color: 'white'
+                  }}
+                >
+                  <span>搜索</span>
                 </div>
-              </div> : <></>
-            }
-            <div style={{position: 'relative', zIndex: 1}}>
+              </div>
+            ) : (
+              <></>
+            )}
+            <div style={{zIndex: 1, display: showSearch ? 'none' : 'block'}}>
               <Component {...pageProps} />
             </div>
           </FluentProvider>
