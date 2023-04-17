@@ -6,7 +6,7 @@ import {
   GriffelRenderer,
   SSRProvider,
   RendererProvider,
-  webLightTheme, ProgressBar,
+  webLightTheme, ProgressBar, Portal,
 } from '@fluentui/react-components';
 import type {AppProps} from 'next/app';
 import Head from "next/head";
@@ -17,6 +17,9 @@ type EnhancedAppProps = AppProps & { renderer?: GriffelRenderer };
 
 function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
   const [loading, setLoading] = useState(false)
+  const [showSearch, setShowSearch] = useState(false)
+
+  const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
   useEffect(() => {
     const start = () => setLoading(true)
     const end = () => setLoading(false)
@@ -29,24 +32,56 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
       Router.events.off('routeChangeError', end)
     }
   }, [])
+  useEffect(() => {
+    function handleKeyPress(event: KeyboardEvent) {
+      if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+        event.preventDefault();
+        setShowSearch((prevState) => !prevState)
+      } else if (event.key === "Escape") {
+        event.preventDefault();
+        setShowSearch(false);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
   return (
     <>
       <Head>
         <meta name="description" content="MYD's blog 下北沢研究院"/>
-        {/*<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>*/}
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1, maximum-scale=1.0, user-scalable=0"/>
         <link rel="icon" href="/favicon.png"/>
-        <link rel="preload" href="/fonts/home-xing-tc.ttf" as="font" type="font/truetype"/>
       </Head>
       <RendererProvider renderer={renderer || createDOMRenderer()}>
         <SSRProvider>
           <FluentProvider theme={webLightTheme}>
-            {/*{loading ? <ProgressBar thickness="large" /> : <div className="loading-placeholder" style={{height: 4}}></div>}*/}
             <div style={{position: 'fixed', width: '100%', zIndex: 10000}}>
               {loading && <ProgressBar thickness="large"></ProgressBar>}
             </div>
-            <div>
+            {
+              showSearch ? <div style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100vh',
+                zIndex: 10001,
+                overflowY: 'scroll'
+              }}>
+                <div style={{height: '100vh', background: 'red', opacity: 0.5}} onWheel={event => {
+                  event.stopPropagation();
+                }}>
+                  {
+                    new Array(10).fill(114).map((v, i) => (<p key={i}>测试遮罩测试遮罩测试遮罩</p>))
+                  }
+                </div>
+              </div> : <></>
+            }
+            <div style={{position: 'relative', zIndex: 1}}>
               <Component {...pageProps} />
             </div>
           </FluentProvider>
