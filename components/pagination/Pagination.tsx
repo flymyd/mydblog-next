@@ -12,12 +12,10 @@ const Pagination: FC<PaginationType> = ({totalPage, pageNum, style, onPageChange
   const onPrevPage: any = () => {
     if (pageNum <= 1) return false;
     onPageChange(pageNum - 1)
-    // setPageNum((state: number) => (state - 1))
   }
   const onNextPage: any = () => {
     if (pageNum >= totalPage) return false;
     onPageChange(pageNum + 1)
-    // setPageNum((state: number) => (state + 1))
   }
   return (
     <div style={{width: 250, ...style}}>
