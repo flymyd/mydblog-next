@@ -14,7 +14,7 @@ const PoeNavigator: FC = () => {
   return (
     <ProjectLayout title="Poe Navigator">
       <FluidWrapper>
-        <div className="w-full flex flex-col gap-3">
+        <div className="w-full flex flex-col gap-3 p-5">
           <Title order={1} className="mb-3 mt-3">Poe Navigator</Title>
           <Title order={2}>这是什么？</Title>
           <Text>一把神奇的可以访问由<Text weight="bold"
