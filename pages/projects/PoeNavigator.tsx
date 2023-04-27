@@ -9,7 +9,7 @@ const updateInfo = {
   version: '1.1.6',
   lastUpdate: '2023-4-27 11:22:42'
 }
-const toolsUrl = `https://mydblog.obs.cn-east-3.myhuaweicloud.com/PoeNavigator-Setup-${updateInfo.version}.exe`
+const toolsUrl = `https://mydblog.obs.cn-east-3.my huaweicloud.com/PoeNavigator-Setup-${updateInfo.version}.exe`
 const PoeNavigator: FC = () => {
   return (
     <ProjectLayout title="Poe Navigator" showNavi={false}>
