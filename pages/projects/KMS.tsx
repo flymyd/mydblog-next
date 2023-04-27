@@ -48,7 +48,7 @@ const KMS: FC = () => {
               <Title order={5}
                      className="mb-3">小站维护服务器不易，如果觉得该服务对你有帮助，还请老爷扫描二维码打赏一个馒头~</Title>
               <img src={CONST.obsPath + '8588f197-8812-4f8a-8845-2a05aeb0ef09'}
-                   className="w-full md:w-['60%']"/>
+                   className="w-full md:w-[60%]"/>
             </div>
           </div>
         </FluidWrapper>

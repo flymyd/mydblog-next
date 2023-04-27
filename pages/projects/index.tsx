@@ -7,6 +7,7 @@ import ProjectsStyle from "@/styles/Projects.module.scss";
 import {CONST} from "@/utils/CONST";
 
 const projectsList = [
+  {img: 'poe-navigator', route: '/projects/PoeNavigator'},
   {img: 'a145094a-e1e5-47cb-a85a-0ba278620e9f', route: '/projects/Escape'},
   {img: 'cff108ac-399e-41aa-b079-1a8f4e0deda4', route: '/projects/KMS'},
   {img: '763fb304-5b85-4aee-bc0c-a48d96f60785', route: '/projects/CatGenerate'},
