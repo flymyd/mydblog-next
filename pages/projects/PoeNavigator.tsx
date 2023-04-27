@@ -12,7 +12,7 @@ const updateInfo = {
 const toolsUrl = `https://mydblog.obs.cn-east-3.myhuaweicloud.com/PoeNavigator-Setup-${updateInfo.version}.exe`
 const PoeNavigator: FC = () => {
   return (
-    <ProjectLayout title="Poe Navigator">
+    <ProjectLayout title="Poe Navigator" showNavi={false}>
       <FluidWrapper>
         <div className="w-full flex flex-col gap-3 p-5">
           <Title order={1} className="mb-3 mt-3">Poe Navigator</Title>
