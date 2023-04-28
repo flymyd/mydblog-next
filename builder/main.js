@@ -95,16 +95,13 @@ async function builder() {
       articles = [...articles, newArticle];
       const indexObj = {}
       Object.assign(indexObj, {...article})
-      indexObj.heads = articleAbstract.heads;
+      indexObj.heads = articleAbstract.heads || [];
       indexes = [...articles, indexObj];
     } else {
-      if (article.updateTime !== updateTime) {
-        article.updateTime = updateTime;
-      }
       article.poster = await checkPoster(name);
       article.abstract = articleAbstract.abstract;
       Object.assign(indexObj, {...article})
-      indexObj.heads = articleAbstract.heads;
+      indexObj.heads = articleAbstract.heads || [];
     }
   }
   articles = articles.filter(obj => Array.from(names).includes(obj.name))
@@ -116,6 +113,7 @@ async function builder() {
   printLog("BUILD INDEXES SUCCESS")
   printLog("SENDING INDEXES TO MEILISEARCH...")
   const client = new MeiliSearch({host: MEILI_SEARCH_HOST})
+  await client.index('articles').deleteAllDocuments()
   await client.index('articles').addDocuments(indexes)
     .then((res) => printLog("SEARCH INDEXES BUILD SUCCESS", true))
   return true;

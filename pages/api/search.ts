@@ -14,7 +14,8 @@ export default async function handler(
   if (typeof key === 'string') {
     const client = new MeiliSearch({host: 'http://123.60.147.94:7700'})
     const results = await client.index('articles').search(key, {
-      limit: query?.limit ?? 20
+      limit: query?.limit ?? 20,
+      attributesToHighlight: ['*']
     })
     res.status(200).json(results);
   } else {

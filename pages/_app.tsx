@@ -6,23 +6,32 @@ import {
   GriffelRenderer,
   SSRProvider,
   RendererProvider,
-  webLightTheme, ProgressBar, Portal,
+  webLightTheme, ProgressBar, Portal, Input,
 } from '@fluentui/react-components';
 import type {AppProps} from 'next/app';
 import Head from "next/head";
 import {useEffect, useState} from "react";
 import {Router} from "next/router";
+import Search from "@/components/Search";
+import {useSpring, animated} from "@react-spring/web";
 
 type EnhancedAppProps = AppProps & { renderer?: GriffelRenderer };
 
 function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
   const [loading, setLoading] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
+  const searchAnimation = useSpring({
+    opacity: showSearch ? 1 : 0,
+  });
+
   const [scrollPosition, setScrollPosition] = useState(0)
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
   useEffect(() => {
     const start = () => setLoading(true)
-    const end = () => setLoading(false)
+    const end = () => {
+      setLoading(false)
+      setShowSearch(false)
+    }
     Router.events.on('routeChangeStart', start)
     Router.events.on('routeChangeComplete', end)
     Router.events.on('routeChangeError', end)
@@ -80,32 +89,7 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
             <div style={{position: 'fixed', width: '100%', zIndex: 10000}}>
               {loading && <ProgressBar thickness="large"></ProgressBar>}
             </div>
-            {showSearch ? (
-              <div
-                style={{
-                  position: 'fixed',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  zIndex: 10001,
-                  height: '100vh',
-                  overflowY: 'scroll'
-                }}
-              >
-                <div
-                  style={{
-                    height: 'auto',
-                    minHeight: '100vh',
-                    background: '#000',
-                    color: 'white'
-                  }}
-                >
-                  <span>搜索</span>
-                </div>
-              </div>
-            ) : (
-              <></>
-            )}
+            {showSearch && <Search animation={searchAnimation} closeSearch={() => setShowSearch(false)}/>}
             <div style={{zIndex: 1, display: showSearch ? 'none' : 'block'}}>
               <Component {...pageProps} />
             </div>

@@ -47,6 +47,17 @@ body {
   }
 }
 
+.fui-Input__input {
+  color: white !important;
+}
+
+em {
+  text-decoration: underline;
+  /*color: #ffff99;*/
+  color: #FFF;
+  font-style:italic;
+}
+
 @font-face {
   font-family: "ZpixLite";
   src: url('./fonts/zpix-lite.ttf');
