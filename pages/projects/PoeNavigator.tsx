@@ -64,6 +64,12 @@ const PoeNavigator: FC = () => {
             </>
           )}
           <Divider/>
+          <Title order={2}>Mac用户安装后提示PoeNavigator已损坏？</Title>
+          <Text underline className="text-blue-700">
+            <a target="_blank" rel="noreferrer"
+               href="https://product.pconline.com.cn/itbk/software/dnyw/1507/15078999.html">点我查看解决方案</a>
+          </Text>
+          <Divider/>
           <Title order={2}>Windows 7/8.1运行报错？</Title>
           <Text>因为构建的Chromium内核版本高于109，所以目前暂不支持过于老的系统。对Win7/8.1的支持已经在RoadMap中，预计5月上旬放出。</Text>
           <Divider/>
