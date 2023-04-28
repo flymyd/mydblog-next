@@ -33,18 +33,28 @@ const PoeNavigator: FC = () => {
           <Divider/>
           <Title order={2}>下载链接是？</Title>
           <Text>
-            <Text size={400} weight="bold" className="text-green-600 mr-2">Windows 64位安装包</Text>
+            <Text size={400} weight="bold" className="text-red-600 mr-2">Windows 10/11 64位安装包</Text>
             <Text size={400} underline className="text-blue-700">
               <a href={toolsUrl}>点我下载：win-amd64-{updateInfo.version}</a>
             </Text>
           </Text>
           <Title order={4}>其它版本下载：</Title>
+          <Text>
+            <Text size={400} weight="bold" className="text-yellow-500 mr-2">Windows 7/8.1 64位安装包</Text>
+            <Text size={400} underline className="text-blue-700">
+              <a
+                href={`https://mydblog.obs.cn-east-3.myhuaweicloud.com/1.1.8/PoeNavigator Setup 1.1.8-win7.exe`}>
+                点我下载：win7-amd64-1.1.8
+              </a>
+            </Text>
+          </Text>
+          <Text>以下的链接均为绿色版，解压即用。</Text>
+          <Text>Windows 7/8.1用户请下载上方的Windows 7专版。</Text>
           <Text>搭载Apple Silicon的Mac用户请下载arm64版本，Intel芯片的Mac用户请下载amd64版本。</Text>
-          <Text>此处的Windows版均为绿色版，解压即用。</Text>
           {packageList.map(obj =>
             <>
               <Text>
-                <Text size={400} weight="bold" className="text-yellow-500 mr-2">{obj.os} x64</Text>
+                <Text size={400} weight="bold" className="text-green-600 mr-2">{obj.os} x64</Text>
                 <Text size={400} underline className="text-blue-700">
                   <a
                     href={`https://mydblog.obs.cn-east-3.myhuaweicloud.com/${updateInfo.version}/PoeNavigator-1.1.8-${obj.os.toLowerCase()}-amd64${obj.suffix}`}>
@@ -53,7 +63,7 @@ const PoeNavigator: FC = () => {
                 </Text>
               </Text>
               <Text>
-                <Text size={400} weight="bold" className="text-yellow-500 mr-2">{obj.os} arm64</Text>
+                <Text size={400} weight="bold" className="text-green-600 mr-2">{obj.os} arm64</Text>
                 <Text size={400} underline className="text-blue-700">
                   <a
                     href={`https://mydblog.obs.cn-east-3.myhuaweicloud.com/${updateInfo.version}/PoeNavigator-1.1.8-${obj.os.toLowerCase()}-arm64${obj.suffix}`}>
