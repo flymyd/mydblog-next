@@ -24,8 +24,7 @@ const PoeNavigator: FC = () => {
           <Divider/>
           <Title order={2}>怎么用？</Title>
           <div className="flex flex-row">
-            <Text>下载以后使用邮箱注册账号即可使用，有手就行。</Text>
-            <Text weight="bold">不要钱。</Text>
+            <Text>下载以后使用邮箱注册账号即可使用，有手就行。<Text weight="bold">不要钱。</Text></Text>
           </div>
           <Divider/>
           <Title order={2}>下载链接是？</Title>
