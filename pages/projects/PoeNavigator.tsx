@@ -80,11 +80,11 @@ const PoeNavigator: FC = () => {
                href="https://product.pconline.com.cn/itbk/software/dnyw/1507/15078999.html">点我查看解决方案</a>
           </Text>
           <Divider/>
-          <Title order={2}>Windows 7/8.1运行报错？</Title>
-          <Text>因为构建的Chromium内核版本高于109，所以目前暂不支持过于老的系统。对Win7/8.1的支持已经在RoadMap中，预计5月上旬放出。</Text>
-          <Divider/>
           <Title order={2}>有没有手机App？</Title>
           <Text>现在不会有，将来也不会有。</Text>
+          <Divider/>
+          <Title order={2}>对话信息是否会被监控？</Title>
+          <Text>本软件无任何后门，所有的数据均由服务提供者poe.com处理。</Text>
           <Divider/>
           <Title order={2}>有BUG/提交反馈？</Title>
           <Text underline>
