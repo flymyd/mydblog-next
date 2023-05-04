@@ -38,7 +38,15 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="zh" className='scroll-smooth'>
-        <Head/>
+        <Head>
+          <link
+            rel="preload"
+            href="/fonts/home-xing-tc.ttf"
+            as="font"
+            type="font/ttf"
+            crossOrigin="anonymous"
+          />
+        </Head>
         <body>
         <Main/>
         <NextScript/>

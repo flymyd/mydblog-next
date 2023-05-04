@@ -93,7 +93,8 @@ em {
 
 @font-face {
   font-family: "HomeXingSC";
-  src: url('./fonts/home-xing-tc.ttf');
+  /*src: url('./fonts/home-xing-tc.ttf');*/
+  src: url('/fonts/home-xing-tc.ttf');
   font-weight: normal;
   font-style: normal;
 }

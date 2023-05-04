@@ -10,7 +10,7 @@ import {HeaderProps} from "@/components/header/HeaderProps";
 const routes = [
   {name: '首页', link: '/', key: '/'},
   {name: '归档', link: '/archives/1', key: 'archives'},
-  {name: '分类', link: '/categories', key: 'categories'},
+  // {name: '分类', link: '/categories', key: 'categories'},
   {name: '友情链接', link: '/friendlyLink', key: 'friendlyLink'},
   {name: 'Projects', link: '/projects', key: 'projects'},
   {name: '关于我', link: '/about', key: 'about'},
