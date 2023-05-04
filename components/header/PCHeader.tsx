@@ -15,14 +15,15 @@ const PCHeader: FC<HeaderProps> = (props) => {
               onClick={() => props.navi.push('/')}>{props.brand}</Text>
         <div className="flex flex-row items-center">
           {props.routes.map(o => <Button key={o.link}
+                                         className="navi-button"
                                          appearance={'subtle'}
                                          style={{color: props.matchRoute(o) ? '#FFF' : '#F5F5F7CC'}}
                                          onClick={() => o.key === "/"
                                            ? props.navi.replace(o.link)
                                            : props.navi.push(o.link)}>{o.name}</Button>)}
-          <Button appearance={'subtle'} style={{color: '#F5F5F7CC'}}
+          <Button className="navi-button" appearance={'subtle'} style={{color: '#F5F5F7CC'}}
                   onClick={() => store.setShowSearch(true)}
-                  icon={<Icon icon={searchIcon} style={{fontSize: 14, marginTop: 3}}/>}>搜索</Button>
+                  icon={<Icon icon={searchIcon} style={{fontSize: 14, marginTop: 3}}/>}>搜索 Ctrl+K</Button>
         </div>
       </div>
     </FluidWrapper>

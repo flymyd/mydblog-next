@@ -2,7 +2,16 @@ import searchIcon from '@iconify/icons-akar-icons/search';
 import crossIcon from '@iconify/icons-akar-icons/cross';
 import {FC, useEffect, useRef, useState} from "react";
 import {Icon} from "@iconify/react";
-import {Divider, Input, InputProps, Text, Spinner} from "@fluentui/react-components";
+import {
+  Divider,
+  Input,
+  InputProps,
+  Text,
+  Spinner,
+  Button,
+  FluentProvider,
+  webDarkTheme
+} from "@fluentui/react-components";
 import FluidWrapper from "@/components/layouts/FluidWrapper";
 import {animated} from "@react-spring/web";
 import useDebounce from "@/hooks/useDebounce";
@@ -73,7 +82,7 @@ const Search: FC<{ animation: any, closeSearch: Function }> = ({animation, close
         <FluidWrapper>
           <div className="flex flex-col w-full my-5 text-white">
             <div className="flex flex-row w-full items-center gap-2">
-              <div className="p-3 pl-0 cursor-pointer" onClick={() => closeSearch()}>
+              <div className="p-3 pl-0 cursor-pointer md:hidden" onClick={() => closeSearch()}>
                 <Icon icon={crossIcon}/>
               </div>
               <Input
@@ -84,6 +93,10 @@ const Search: FC<{ animation: any, closeSearch: Function }> = ({animation, close
                 contentAfter={<Icon icon={searchIcon}/>}
                 onChange={onInputChange}
               />
+              <div className="hidden md:block">
+                <Button className="search-cancel__button" appearance="subtle"
+                        onClick={() => closeSearch()}>取消</Button>
+              </div>
             </div>
             <div className="flex flex-col w-full mt-5">
               {isSearching && <Spinner size="large"/>}

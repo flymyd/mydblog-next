@@ -58,7 +58,15 @@ em {
   font-style: italic;
 }
 
-.fui-Button:hover {
+.navi-button:hover {
+  color: black !important;
+}
+
+.search-cancel__button {
+  color: #cbcbcb !important;
+}
+
+.search-cancel__button:hover {
   color: black !important;
 }
 
