@@ -37,7 +37,7 @@ const Search: FC<{ animation: any, closeSearch: Function }> = ({animation, close
     }
   }, [text])
   const handleInnerText = (article: ArticleIndex) => {
-    const heads = article?.heads ?? []
+    const heads = [...(article?.heads ?? [])]
     if (typeof article.abstract === "string") {
       heads.unshift(article.abstract)
     }
