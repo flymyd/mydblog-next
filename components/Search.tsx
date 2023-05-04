@@ -2,7 +2,7 @@ import searchIcon from '@iconify/icons-akar-icons/search';
 import crossIcon from '@iconify/icons-akar-icons/cross';
 import {FC, useEffect, useRef, useState} from "react";
 import {Icon} from "@iconify/react";
-import {Divider, Input, InputProps, Text} from "@fluentui/react-components";
+import {Divider, Input, InputProps, Text, Spinner} from "@fluentui/react-components";
 import FluidWrapper from "@/components/layouts/FluidWrapper";
 import {animated} from "@react-spring/web";
 import useDebounce from "@/hooks/useDebounce";
@@ -18,6 +18,7 @@ const Search: FC<{ animation: any, closeSearch: Function }> = ({animation, close
     inputRef.current.focus();
   }, [])
   const [searchRes, setSearchRes] = useState<Array<ArticleIndex> | null>(null)
+  const [isSearching, setSearchingStatus] = useState(false)
   //防抖的搜索框输入
   const [text, setText] = useState('')
   const [textDep, setTextDep] = useState('')
@@ -29,15 +30,18 @@ const Search: FC<{ animation: any, closeSearch: Function }> = ({animation, close
   };
   useEffect(() => {
     if (text) {
+      setSearchingStatus(true)
+      setSearchRes(null)
       axios.get('/api/search?key=' + text).then(res => {
         if (res.status === 200) {
           setSearchRes(res?.data?.hits ?? [])
+          setSearchingStatus(false)
         }
       })
     }
   }, [text])
   const handleInnerText = (article: ArticleIndex) => {
-    const heads = article?.heads ?? []
+    const heads = [...(article?.heads ?? [])]
     if (typeof article.abstract === "string") {
       heads.unshift(article.abstract)
     }
@@ -82,6 +86,7 @@ const Search: FC<{ animation: any, closeSearch: Function }> = ({animation, close
               />
             </div>
             <div className="flex flex-col w-full mt-5">
+              {isSearching && <Spinner size="large"/>}
               {Array.isArray(searchRes) && searchRes.length === 0 && <Text>无匹配的搜索结果</Text>}
               {
                 searchRes && searchRes.map((obj, i) => {
