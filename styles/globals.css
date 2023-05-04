@@ -55,7 +55,11 @@ em {
   text-decoration: underline;
   /*color: #ffff99;*/
   color: #FFF;
-  font-style:italic;
+  font-style: italic;
+}
+
+.fui-Button:hover {
+  color: black !important;
 }
 
 @font-face {

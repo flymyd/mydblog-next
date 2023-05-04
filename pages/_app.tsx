@@ -6,31 +6,23 @@ import {
   GriffelRenderer,
   SSRProvider,
   RendererProvider,
-  webLightTheme, ProgressBar, Portal, Input,
+  webLightTheme, ProgressBar
 } from '@fluentui/react-components';
 import type {AppProps} from 'next/app';
 import Head from "next/head";
 import {useEffect, useState} from "react";
 import {Router} from "next/router";
-import Search from "@/components/Search";
-import {useSpring, animated} from "@react-spring/web";
-
+import SearchController from "@/components/Search/SearchController";
+import {AppStateStore} from "@/store/AppStateStore";
 type EnhancedAppProps = AppProps & { renderer?: GriffelRenderer };
-
 function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
   const [loading, setLoading] = useState(false)
-  const [showSearch, setShowSearch] = useState(false)
-  const searchAnimation = useSpring({
-    opacity: showSearch ? 1 : 0,
-  });
-
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
+  const [lastRouteLoaded, setLastRouteLoaded] = useState(0)
   useEffect(() => {
     const start = () => setLoading(true)
     const end = () => {
       setLoading(false)
-      setShowSearch(false)
+      setLastRouteLoaded(new Date().getTime())
     }
     Router.events.on('routeChangeStart', start)
     Router.events.on('routeChangeComplete', end)
@@ -41,40 +33,6 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
       Router.events.off('routeChangeError', end)
     }
   }, [])
-  useEffect(() => {
-    function handleKeyPress(event: KeyboardEvent) {
-      if ((event.ctrlKey || event.metaKey) && event.key === "k") {
-        event.preventDefault();
-        setShowSearch((prevState) => {
-          if (!prevState) {
-            setScrollPosition(window.scrollY)
-          }
-          return !prevState;
-        })
-      } else if (event.key === "Escape") {
-        event.preventDefault();
-        setShowSearch(false);
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyPress);
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress);
-    };
-  }, []);
-  useEffect(() => {
-    if (!showSearch) {
-      const scrollOpts: any = {
-        top: scrollPosition,
-        left: 0,
-        behavior: 'instant'
-      }
-      window.scrollTo(scrollOpts)
-      setTimeout(() => {
-        setScrollPosition(0)
-      }, 100)
-    }
-  }, [showSearch])
   return (
     <>
       <Head>
@@ -85,15 +43,18 @@ function MyApp({Component, pageProps, renderer}: EnhancedAppProps) {
       </Head>
       <RendererProvider renderer={renderer || createDOMRenderer()}>
         <SSRProvider>
-          <FluentProvider theme={webLightTheme}>
-            <div style={{position: 'fixed', width: '100%', zIndex: 10000}}>
-              {loading && <ProgressBar thickness="large"></ProgressBar>}
-            </div>
-            {showSearch && <Search animation={searchAnimation} closeSearch={() => setShowSearch(false)}/>}
-            <div style={{zIndex: 1, display: showSearch ? 'none' : 'block'}}>
-              <Component {...pageProps} />
-            </div>
-          </FluentProvider>
+          <AppStateStore>
+            <FluentProvider theme={webLightTheme}>
+              <div style={{position: 'fixed', width: '100%', zIndex: 10000}}>
+                {loading && <ProgressBar thickness="large"></ProgressBar>}
+              </div>
+              <SearchController lastRouteLoaded={lastRouteLoaded}/>
+              {/*<div style={{zIndex: 1, display: showSearch ? 'none' : 'block'}}>*/}
+              <div style={{zIndex: 1}}>
+                <Component {...pageProps} />
+              </div>
+            </FluentProvider>
+          </AppStateStore>
         </SSRProvider>
       </RendererProvider>
     </>

@@ -54,7 +54,7 @@ const Search: FC<{ animation: any, closeSearch: Function }> = ({animation, close
     return newHeads.join('');
   }
   return (
-    <animated.div style={{
+    <animated.div className="search-div" style={{
       position: 'fixed',
       top: 0,
       left: 0,

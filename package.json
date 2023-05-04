@@ -33,6 +33,8 @@
     "lodash": "^4.17.21",
     "markdown-it": "^13.0.1",
     "meilisearch": "^0.32.3",
+    "mobx": "^6.9.0",
+    "mobx-react-lite": "^3.4.3",
     "next": "13.1.6",
     "next-sitemap": "^4.0.6",
     "next-themes": "^0.2.1",
