@@ -5,6 +5,7 @@ const homeTextStyle: CSSProperties = {
   fontSize: 60,
   lineHeight: '1em',
   width: '1em',
+  userSelect: 'none',
   fontFamily: "'HC-2021', HomeXingSC"
 }
 const IndexCurtain: FC = () => {
@@ -30,7 +31,7 @@ const IndexCurtain: FC = () => {
           </div>
         </div>
         <div className="flex flex-row items-center justify-center w-full">
-          向下滚动 ，进入主页 ↓
+          向下滚动 ↓
         </div>
       </FluidWrapper>
     </section>

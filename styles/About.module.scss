@@ -1,0 +1,43 @@
+$bg-gradient: linear-gradient(-3deg, #000, #000 25%, #ffb6ff, #b344ff, #000 75%, #000);
+.title-container {
+  @apply relative w-full z-50 flex flex-row items-center justify-center;
+  width: 100vw;
+  background: $bg-gradient;
+}
+
+.title-text {
+  @apply text-6xl w-full;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: #000;
+  mix-blend-mode: darken;
+}
+
+.container {
+  width: 100vw;
+  height: 300vh;
+  background: $bg-gradient;
+}
+
+.text {
+  width: 100vw;
+  height: 100vh;
+  font-size: 56px;
+  font-weight: 900;
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background: #000;
+  mix-blend-mode: darken;
+}
+
+.txt {
+  padding: 0 12.5vw;
+  line-height: 1.5em;
+}

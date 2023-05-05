@@ -38,7 +38,7 @@ const SearchController: FC<any> = (props: { lastRouteLoaded: number }) => {
       window.removeEventListener("keydown", handleKeyPress);
     };
   }, []);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const disposer = autorun(() => {
       if (!store.showSearch) {
         const scrollOpts: any = {
