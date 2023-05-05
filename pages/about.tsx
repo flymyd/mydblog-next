@@ -15,37 +15,83 @@ const About: FC = () => {
               <div className={[styles['title-text'], 'min-h-layout'].join(' ')}>
                 <div className="flex flex-col gap-5">
                   <span>欢迎访问，</span>
-                  <span>这个小小的前端部落格。</span>
+                  <span>这是一个小小的前端部落格。</span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="snap-start min-h-layout w-full">
+            <div className={[styles['title-container'], styles['title-container-blue'], 'min-h-layout'].join(' ')}>
+              <div className={[styles['title-text'], 'min-h-layout'].join(' ')}>
+                <div className="flex flex-col gap-5">
+                  <span>该网站使用Next.js构建，</span>
+                  <span>由Vercel托管，</span>
+                  <span>CloudFlare提供加速服务。</span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="snap-start min-h-layout w-full">
+            <div className={styles['container-red']}>
+              {/*<div className={[styles['title-container'], 'h-[20vh]'].join(' ')}>*/}
+              {/*  <div className={[styles['title-text'], styles['intro-text'], 'h-[20vh]'].join(' ')}>*/}
+              {/*    <div className="flex flex-col gap-5 mt-[30vh]">*/}
+              {/*      <span>网站使用Next.js构建，</span>*/}
+              {/*      <span>由Vercel托管，</span>*/}
+              {/*      <span>CloudFlare提供加速服务。</span>*/}
+              {/*    </div>*/}
+              {/*  </div>*/}
+              {/*</div>*/}
+              <div className={styles.text}>
+                <div className={styles.txt}>
+                  <div className="flex flex-col gap-5">
+                    <span>{'> '}我擅长的语言是JavaScript、TypeScript ;</span>
+                    <span>{'> '}也会写些Java ;</span>
+                    <span>{'> '}有时候会搞点Python、Shell脚本 ;</span>
+                  </div>
                 </div>
               </div>
             </div>
           </section>
           <section className="snap-start min-h-layout w-full">
             <div className={styles.container}>
-              <div className={[styles['title-container'], 'h-[20vh]'].join(' ')} style={{background: 'white'}}>
-                <p className={[styles['title-text'], 'h-[20vh]'].join(' ')}>
-                  <span>测试文字1</span>
-                  <span>测试文字2</span>
-                </p>
-              </div>
               <div className={styles.text}>
-                  <span className={styles.txt}>
-                    测试玩法
-                  </span>
+                <div className={styles.txt}>
+                  <div className="flex flex-col gap-5">
+                    <span>Vue 2、Vue 3、React.js都能拿捏，</span>
+                    <span>uni-app、Electron富有开发经验，</span>
+                    <span>Nest.js、TypeORM也不是没写过。</span>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
           <section className="snap-start min-h-layout w-full">
-            <div className={styles.container}>
+            <div className={styles['container-green']}>
               <div className={styles.text}>
-                  <span className={styles.txt}>
-                    灵动的 iPhone
-                    新玩法，迎面而来。重大的安全新功能，为拯救生命而设计。创新的 4800
-                    万像素主摄，让细节纤毫毕现。更有 iPhone
-                    芯片中的速度之王，为一切提供强大原动力。
-                  </span>
+                <div className={styles.txt}>
+                  <div className="flex flex-col gap-5">
+                    <span>极强的知识获取能力 √</span>
+                    <span>较强的自我驱动力 √</span>
+                    <span>良好的分析问题和解决问题的能力 √</span>
+                    <span>善于学习和总结分析 √</span>
+                  </div>
+                </div>
               </div>
             </div>
+          </section>
+          <section className="snap-start min-h-layout w-full bg-[#111]">
+            <FluidWrapper>
+              <div className="flex flex-col items-center justify-center min-h-layout text-white text-[50px]">
+                <div className="flex flex-col gap-20">
+                  <span>👉有事相询：<a className="underline"
+                                     href="mailto:flymyd@foxmail.com">flymyd@foxmail.com</a></span>
+                  <span>👉看看简历：<a className="underline cursor-pointer">点我</a></span>
+                  <span>👉GitHub：<a className="underline cursor-pointer" target="_blank" rel="noreferrer"
+                                   href="https://github.com/flymyd">点我</a></span>
+                </div>
+              </div>
+            </FluidWrapper>
           </section>
         </main>
       </IndexLayout>
