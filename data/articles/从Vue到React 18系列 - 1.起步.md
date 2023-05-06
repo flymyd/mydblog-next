@@ -110,7 +110,7 @@ JSX在react中实质上只是React.createElement的语法糖。与Vue template�
 
 而在React中应该使用{}代替""书写：
 
-```react
+```jsx
 function App() {
   const shouting = () => {
     alert('114514')
@@ -144,7 +144,7 @@ export default App
 
 如果有这样一个组件：
 
-```react
+```jsx
 const Test: FC = () => {
   function shout(text: string) {
     console.log(text)

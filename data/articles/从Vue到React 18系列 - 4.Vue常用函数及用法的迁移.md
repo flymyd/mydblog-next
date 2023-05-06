@@ -152,7 +152,7 @@ function Demo() {
 
 如果想通过props传递控制组件来实现类似于v-if/v-show的效果，则需要在render时判断props内的相关属性并填充相关逻辑。
 
-```react
+```jsx
 import React, { FC, useState } from 'react'
 
 const Test = (props: { [x: string]: any; }) => {
@@ -209,7 +209,7 @@ function Demo() {
 
 v-model本质上是利用名为value的prop和名为input的事件来实现数据的双向绑定。
 
-```react
+```jsx
 import React, { FC, useState } from 'react'
 
 function Input(props: any) {

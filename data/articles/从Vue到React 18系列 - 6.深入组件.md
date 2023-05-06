@@ -190,7 +190,7 @@ function Parent({ a, b }) {
 
 相比之下，Class Component 的写法通常是：
 
-```react
+```jsx
 class Button extends React.PureComponent {}
 ```
 
