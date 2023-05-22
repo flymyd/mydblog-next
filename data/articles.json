@@ -228,6 +228,21 @@
     "tags": [],
     "categories": [],
     "poster": "",
-    "abstract": "..."
+    "abstract": "...",
+    "heads": [
+      "CSS",
+      "模板"
+    ]
+  },
+  {
+    "name": "用WebStorm开发uniapp微信小程序.md",
+    "updateTime": "2023-05-16T02:42:38.730Z",
+    "title": "用WebStorm开发uniapp微信小程序",
+    "id": 21,
+    "isTop": false,
+    "tags": [],
+    "categories": [],
+    "poster": "",
+    "abstract": "公司从22年底开始全面将uniapp项目切换至Vue3 + Vite + TypeScript\n技术栈，但HbuilderX直到本文编写时也依然存在很多问题，比如语法检查服务崩溃、无法跳转代码引用等，"
   }
 ]
