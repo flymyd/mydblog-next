@@ -5,7 +5,7 @@ const indexesPath = path.resolve(__dirname, '../data')
 const publicPath = path.resolve(__dirname, '../public')
 
 // const MEILI_SEARCH_HOST = 'http://123.60.147.94:7700';
-const MEILI_SEARCH_HOST = 'http://129.153.74.221:7700';
+const MEILI_SEARCH_HOST = 'http://121.41.170.75:7700';
 
 function printLog(text, isEnd) {
   console.log("**********************************")
