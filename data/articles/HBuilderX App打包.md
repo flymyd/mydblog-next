@@ -126,7 +126,7 @@
 * 部署uniapp-build项目。该项目的最低node版本为v18。
 
   ```sh
-  git clone https://git.zoann.cn/myd/uniapp-build
+  git clone https://[保密涂抹]
   cd ./uniapp-build
   npm i
   npm run build
