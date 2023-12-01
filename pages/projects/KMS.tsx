@@ -11,7 +11,7 @@ const KMS: FC = () => {
   useEffect(() => {
     const copy = new Clipboard('.copy-uuid');
   }, [])
-  const kmsCmd = `slmgr -skms van.ac.cn\nslmgr -ato`
+  const kmsCmd = `slmgr -skms kms.van.ac.cn\nslmgr -ato`
   return (
     <>
       <ProjectLayout title="KMS在线激活服务器">
@@ -20,8 +20,8 @@ const KMS: FC = () => {
             <Title order={1} className="mb-3 mt-3">KMS在线激活服务器</Title>
             <div className="flex flex-row mb-3">
               <Text fz="lg">域名（点击复制）：</Text>
-              <a className="copy-uuid cursor-pointer" data-clipboard-text="van.ac.cn">
-                <Text fs="italic" fz="lg" td="underline" c="blue">van.ac.cn</Text>
+              <a className="copy-uuid cursor-pointer" data-clipboard-text="kms.van.ac.cn">
+                <Text fs="italic" fz="lg" td="underline" c="blue">kms.van.ac.cn</Text>
               </a>
             </div>
             <Title order={3} className="mb-3">使用方法</Title>
@@ -39,7 +39,7 @@ const KMS: FC = () => {
                 <a href={gitUrl} target="_blank" rel="noreferrer">{gitUrl}</a>
               </Text>
               <Text>的v1.4.3原版文件，安全无毒，请放心使用。</Text>
-              <Text>下载后请解压并执行kms-activate.exe，并在KMS Server一栏填入van.ac.cn然后点击Activate即可。</Text>
+              <Text>下载后请解压并执行kms-activate.exe，并在KMS Server一栏填入kms.van.ac.cn然后点击Activate即可。</Text>
             </div>
             <Text fz="lg" fw={700} td="underline" c="blue" className="mb-7">
               <a href={toolsUrl}>点我下载</a>
