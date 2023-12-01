@@ -17,7 +17,7 @@ const Escape: FC = () => {
                 <span className="font-bold text-lg mb-5">最后更新时间：2023-12-01 16:42:08</span>
               </div>
               <Timeline color="dimmed" active={1} bulletSize={12} lineWidth={2}>
-                <Timeline.Item color="green" title="2023-06-14 晚">
+                <Timeline.Item color="green" title="现在">
                   <Card className="mt-3" shadow="sm" p="lg" radius="md" withBorder>
                     <Text size="sm">被文字狱迫害的学者们
                       {/*<Text style={{cursor: 'pointer'}} variant="link" component="span" inherit>*/}
@@ -28,21 +28,21 @@ const Escape: FC = () => {
                     <Text size="xs" mt={4}>老陈 重建于 2023-09-22</Text>
                   </Card>
                 </Timeline.Item>
-                <Timeline.Item color="red" title="2023-09-22 晚">
+                <Timeline.Item color="red" title="2023-09-22">
                   <Card className="mt-3" shadow="sm" p="lg" radius="md" withBorder>
                     <Text color="dimmed" size="sm">好好工作好好吃饭 已被封禁</Text>
                     <Text color="dimmed" size="xs" mt={4}>胭脂 重建于 2023-06-14</Text>
                     <Text color="dimmed" size="xs" mt={4}>落幕僚 封号7天</Text>
                   </Card>
                 </Timeline.Item>
-                <Timeline.Item color="red" title="2023-06-14 晚">
+                <Timeline.Item color="red" title="2023-06-14">
                   <Card className="mt-3" shadow="sm" p="lg" radius="md" withBorder>
                     <Text color="dimmed" size="sm">前端新津 已被封禁</Text>
                     <Text color="dimmed" size="xs" mt={4}>老鼠人 重建于 2022-10-17</Text>
                     <Text color="dimmed" size="xs" mt={4}>夏雪冬花 永封 / 兔兔 封号7天</Text>
                   </Card>
                 </Timeline.Item>
-                <Timeline.Item color="red" title="2022-10-17 晚">
+                <Timeline.Item color="red" title="2022-10-17">
                   <Card className="mt-3" shadow="sm" p="lg" radius="md" withBorder>
                     <Text color="dimmed" size="sm">前端耶路撒冷 已被封禁</Text>
                     <Text color="dimmed" size="xs" mt={4}>夏雪冬花 重建于 2022-09-06</Text>
