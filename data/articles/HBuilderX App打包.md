@@ -2,7 +2,7 @@
 
 剖析HBuilderX结构，完成打包环境的移植。
 
-* 使用DebugPreview抓取HbuilderX打wgt包的调试信息，可得：
+* 使用Debugview抓取HbuilderX打wgt包的调试信息，可得：
 
    ```sh
   [16764] 2023-05-16 09:50:20.583 [INFO:] node "D:/HBuilderX/plugins/node/node.exe"
