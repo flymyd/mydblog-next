@@ -1,5 +1,3 @@
-# 漫谈Uniapp App热更新包-Jenkins CI/CD打包工具链的搭建
-
 ## 零、写在前面
 
 HBuilderX是DCloud旗下的IDE产品，目前只提供了Windows和Mac版本使用。本项目组在开发阶段经常需要向测试环境提交热更新包，使用Jenkins进行CD是非常有必要的一步。尽管HBuilderX提供了CLI，但Jenkins服务通常都是搭建在Linux环境下的。当前的Uniapp wgt打包服务是使用了Windows Server + HBuilderX CLI的解决方案来进行打包，再用Jenkins远程调用接口。这套方案的弊病有如下几点：
@@ -73,7 +71,11 @@ $basepath/node_modules/npm/bin/npm-cli.js $@
 
 ### 环境变量修补
 
-HBuilderX在打包阶段会使用自己的`node`和`npm`，我们要做的就是修补***环境变量***使得这些工具都能找到正确的工作目录。以下是一个使用`node.js`成功在`Windows`下脱离`HbuilderX`主程序调用打包的例子：
+HBuilderX在打包阶段会使用自己的`node`和`npm`，我们要做的就是修补***环境变量***使得这些工具都能找到正确的工作目录。
+
+查看打包前的环境变量也很简单，既然调用栈是`uniapp-cli-vite/node_modules/@dcloudio/vite-plugin-uni/bin/uni.js`，那么直接在`uni.js`的尾部追加`console.log(process.env)`后再次在HBuilderX里执行打包，记录控制台输出并去除无关的环境变量即可。
+
+以下是一个使用`node.js`成功在`Windows`下脱离`HbuilderX`主程序调用打包的例子：
 
   ```javascript
   /**
