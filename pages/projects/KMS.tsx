@@ -12,6 +12,7 @@ const KMS: FC = () => {
     const copy = new Clipboard('.copy-uuid');
   }, [])
   const kmsCmd = `slmgr -skms kms.van.ac.cn\nslmgr -ato`
+  const keyCmd = `slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX\nslmgr -ato`
   return (
     <>
       <ProjectLayout title="KMS在线激活服务器">
@@ -31,6 +32,12 @@ const KMS: FC = () => {
             </Text>
             <Code block className="mb-3">
               {kmsCmd}
+            </Code>
+            <Text className="mb-3">
+              如果提示和密钥相关的错误，比如密钥被阻止、密钥不适用于该版本等...只要报错里带有密钥的信息，执行如下命令：
+            </Text>
+            <Code block className="mb-3">
+              {keyCmd}
             </Code>
             <Title order={4} className="mb-3">使用软件一键激活</Title>
             <div className="flex flex-row mb-3" style={{flexWrap: 'wrap'}}>
